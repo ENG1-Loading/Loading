@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes ,Route } from 'react-router-dom';
-import App from "./pages/test";
+import App from "./pages/WeeklyNotes";
 const Main = () => {
     return (
         <Routes>

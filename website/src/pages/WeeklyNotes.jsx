@@ -1,5 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react';
-
+import React, {useEffect, useState} from 'react';
+import "../static/weekly.css"
 import Markdown from 'markdown-to-jsx';
 import markdown from '../markdowns.json'
 
@@ -24,18 +24,24 @@ function App() {
          }, []);
         // line 33: check if the thing we are trying to interpret as markdown is an empty string or not 
          return (
-        <div className="container"> 
-        
-            {
-                items.map((i) => (
-                    
-                    <Markdown>
-                        {i===""? "did you forget to put stuff in this file?": i + "\n"} 
-                    </Markdown>
-                )
-                )}
+             <div className='parent'>
+                 <h1>Weekly notes</h1>
+                 <p><i>this page will keep a track of our notes made week to week</i></p>
+                <div className="container"> 
+                
+                    {
+                        items.map((i) => (
+                            <>
+                            <Markdown>
+                                {i===""? "did you forget to put stuff in this file?": i + "\n"} 
+                            </Markdown>
+                            <hr style={{opacity: "0.2"}}></hr>
+                            </>
+                        )
+                        )}
 
-        </div>
+                </div>
+            </div>
     );
 }
 
