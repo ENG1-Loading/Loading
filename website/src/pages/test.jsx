@@ -9,7 +9,7 @@ function App() {
     const fetchAllFiles = async () => {
 
     //    loop through the files and read the text and set it to the state
-        setItems([])
+        setItems([]) // to prevent the state staying the same on re-render and having the current content on page duplicated reset the state everytime this is run
         const files=markdown['files']
         for (const file of files) {
             const response = await fetch(require(`../content/${file}`));
@@ -22,13 +22,15 @@ function App() {
         //fetch all the files and set it to the state
         fetchAllFiles()
          }, []);
-    return (
-        <div className="container">
+        // line 33: check if the thing we are trying to interpret as markdown is an empty string or not 
+         return (
+        <div className="container"> 
+        
             {
                 items.map((i) => (
                     
                     <Markdown>
-                        {i===""? "did you forget to put stuff in this file?": i + "\n"}
+                        {i===""? "did you forget to put stuff in this file?": i + "\n"} 
                     </Markdown>
                 )
                 )}
