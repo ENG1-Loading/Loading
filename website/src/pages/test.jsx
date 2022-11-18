@@ -1,31 +1,29 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import Markdown from 'markdown-to-jsx';
-import currentPosts from "../markdowns.json"
+import markdown from '../markdowns.json'
 
 function App() {
+    const [items,setItems]=useState([])
+    //read the text of all the files from ../content
+    const fetchAllFiles = async () => {
+    //    loop through the files and read the text and set it to the state
+        const files=markdown['files']
+        for (const file of files) {
+            const response = await fetch(require(`../content/${file}`));
+            const text = await response.text();
+            setItems(items=>[...items,text])
 
-    const itemsRef = useRef([]);
-    useEffect(() => {
-         for (let i of currentPosts["files"]) {
-            console.log("here")
-            import(`../content/${i}`)
-            .then(res => {
-                fetch(res.default)
-                    .then(res => res.text())
-                    .then(res => {itemsRef.current.push(res)})
-                    .catch(err => console.log("error here", err));
-            })
-            .catch(err => console.log("errrrr",err));
         }
-
-        
-    }, []);
-    console.log(itemsRef.current)
+    }
+    useEffect(() => {
+        //fetch all the files and set it to the state
+        fetchAllFiles()
+         }, []);
     return (
         <div className="container">
             {
-                itemsRef.current.map((i) => (
+                items.map((i) => (
                     <Markdown>
                         {i}
                     </Markdown>
@@ -33,7 +31,7 @@ function App() {
                 )}
             <Markdown>
                 *hi**
-                
+
             </Markdown>
         </div>
     );

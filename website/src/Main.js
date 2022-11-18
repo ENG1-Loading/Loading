@@ -4,7 +4,7 @@ import App from "./pages/test";
 const Main = () => {
     return (
         <Routes>
-            <Route exact path="/test" element={<App />}></Route>
+            <Route exact path="/" element={<App />}></Route>
         </Routes>
     )
 }
