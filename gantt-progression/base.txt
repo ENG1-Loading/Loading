@@ -1,0 +1,47 @@
+@startgantt
+
+<style>
+ganttDiagram {
+	task {
+		BackGroundColor GreenYellow
+		LineColor Green
+		unstarted {
+			LineColor FireBrick
+		}
+	}
+}
+</style>
+
+-- section 1 --
+project starts 2022-11-15
+[interview planning] lasts 7 days
+then [interview] lasts 1 day
+[requirements] lasts 14 days
+[requirements] starts at [interview]'s end
+[architecture ( stage 1 )] lasts 14 days
+[architecture ( stage 1 )] starts at 2022-11-24
+-- section 2 --
+then [method selection and planning] lasts 7 days
+-- section 3 --
+then [risk assessment] lasts 7 days
+2022-12-22 to 2022-12-27 is closed
+2023-01-09 to 2023-01-15 is closed
+then [architecture ( stage 2 )] starts 2022-12-28
+[architecture ( stage 2 )] lasts 21 days
+[storyboard] starts at [architecture ( stage 2 )]'s start
+[storyboard] lasts 2 days
+then [implementation] lasts 24 days
+then [finalization] lasts 5 days
+
+[interview planning] is 0% complete
+[interview] is 0% complete
+[requirements] is 0% complete
+[architecture ( stage 1 )] is 0% complete
+[method selection and planning] is 0% complete
+[risk assessment] is 0% complete
+[architecture ( stage 2 )] is 0% complete
+[storyboard] is 0% complete
+[implementation] is 0% complete
+[finalization] is 0% complete
+
+@endgantt
