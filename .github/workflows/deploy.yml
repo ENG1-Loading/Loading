@@ -14,17 +14,17 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Move to app directory
-      run: pushd website
+      run: cd website
 
     - name: Install dependencies
-      run: npm ci
+      run: npm install
       
     - name: Build and deploy
       run: |
         npm run build
         rm -rf ../docs
         mv build ../docs
-        popd
+        cd -
         git add docs
         git commit -m "Deploy"
         git push -f https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git gh-pages
