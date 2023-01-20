@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Move to app directory
+      run: cd website
+
+    - name: Build and deploy
+      run: |
+        npm install
+        npm run build
+        rm -rf ../docs
+        mv build ../docs
+        cd ..
+        git add docs
+        git commit -m "Deploy"
+        git push -f https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git gh-pages
