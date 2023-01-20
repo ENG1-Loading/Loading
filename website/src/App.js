@@ -1,5 +1,6 @@
 import Main from './Main';
 import './App.css';
+import RiskAssesmnet from './pages/RiskManagement';
 
 function App() {
   return (
