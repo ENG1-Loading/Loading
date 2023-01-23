@@ -16,7 +16,7 @@ public class MenuScreen implements Screen{
         this._parent = parent;
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
+        camera.setToOrtho(false, 1280, 800);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class MenuScreen implements Screen{
 
         _parent.batch.begin();
         _parent.font.draw(_parent.batch, "Piazza Panic!", 100, 150);
-        _parent.font.draw(_parent.batch, "Press the any key to start", 100, 100);
+        _parent.font.draw(_parent.batch, "Press the SPACE key to start", 100, 100);
         _parent.batch.end();
 
     }
