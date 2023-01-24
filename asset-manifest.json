@@ -1,19 +1,20 @@
 {
   "files": {
     "main.css": "/Loading/static/css/main.3c7fcf9e.css",
-    "main.js": "/Loading/static/js/main.2ba34da0.js",
+    "main.js": "/Loading/static/js/main.c9679d80.js",
     "static/js/787.71e672d5.chunk.js": "/Loading/static/js/787.71e672d5.chunk.js",
+    "static/media/piazza-panic.jar": "/Loading/static/media/piazza-panic.49a8557a4cbdf85b881e.jar",
     "index.html": "/Loading/index.html",
-    "static/media/no.md": "/Loading/static/media/no.8dee80a2bcd9b46b4000.md",
-    "static/media/ok.md": "/Loading/static/media/ok.96675da6cd05caa824cb.md",
-    "static/media/hello.md": "/Loading/static/media/hello.42a8725799e6b9ac688e.md",
+    "static/media/no.md": "/Loading/static/media/no.b0e06860217e75ed3480.md",
+    "static/media/ok.md": "/Loading/static/media/ok.daf9185cb210d46577e5.md",
+    "static/media/hello.md": "/Loading/static/media/hello.64ea4dfc9e05a0611cd6.md",
     "static/media/empty.md": "/Loading/static/media/empty.31d6cfe0d16ae931b73c.md",
     "main.3c7fcf9e.css.map": "/Loading/static/css/main.3c7fcf9e.css.map",
-    "main.2ba34da0.js.map": "/Loading/static/js/main.2ba34da0.js.map",
+    "main.c9679d80.js.map": "/Loading/static/js/main.c9679d80.js.map",
     "787.71e672d5.chunk.js.map": "/Loading/static/js/787.71e672d5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3c7fcf9e.css",
-    "static/js/main.2ba34da0.js"
+    "static/js/main.c9679d80.js"
   ]
 }
