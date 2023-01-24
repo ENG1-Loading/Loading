@@ -1,6 +1,9 @@
 import { ClipLoader } from "react-spinners"
 import "../static/home.css"
+import { useNavigate } from "react-router-dom"
+import jar from "../piazza-panic.jar"
 export default function Homepage() {
+
     return (
         <div>
             <h1><u>Loading...</u><ClipLoader
@@ -25,7 +28,9 @@ export default function Homepage() {
                     <div className="boxContent">
                             <h3>Executable jar</h3>
                             <p>Please click the button below to download the executable jar of our game, or the button below to view all versions</p>
+                            <a href={jar} download="game.jar" target='_blank'>
                             <button>Download</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +39,10 @@ export default function Homepage() {
                     <div className="boxContent">
                             <h3>Version control</h3>
                             <p>Please click the button to be redirected to our page which has the version control history of our repository</p>
-                            <button>Go to page</button>
+                            <button onClick={(e) => {
+                                e.preventDefault()
+                                window.open(`${process.env.PUBLIC_URL}/version_control`, "_blank")
+                            }}>Go to page</button>
                         </div>
 
                     </div>
@@ -46,6 +54,31 @@ export default function Homepage() {
                         </div>
                     </div>
                 </div>
+                </div>
+                    <div className="boxChild">
+                    <div className="box">
+                    <div className="boxContent">
+                            <h3>Risk Management</h3>
+                            <p>Please click the button to be redirected to our page which has the risk management table</p>
+                            <button onClick={(e) => {
+                                e.preventDefault()
+                                window.open( `${process.env.PUBLIC_URL}/risk_assessment`, "_blank")
+                            }}>Go to page</button>
+                        </div>
+
+                    </div>
+                    <div className="box">
+                    <div className="boxContent">
+                            <h3>Notes</h3>
+                            <p>Please click the button to be redirected to our page which has all the notes</p>
+                            <button onClick={(e) => {
+                                e.preventDefault()
+                                window.open(`${process.env.PUBLIC_URL}/notes`, "_blank")
+                            }}>Go to page</button>
+                        </div>
+
+                    </div>
+
             </div>
             
             </div>
