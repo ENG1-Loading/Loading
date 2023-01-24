@@ -3,12 +3,15 @@ package com.loading.piazzapanic;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -28,6 +31,12 @@ public class GameScreen implements Screen {
 
     private Box2DDebugRenderer box2dDebugRenderer;
 
+    Texture background;
+    Sprite backgroundSprite;
+
+    Texture chef1;
+    Sprite chef1Sprite;
+
     ArrayList<Player> players;
     int activePlayer;
 
@@ -39,13 +48,21 @@ public class GameScreen implements Screen {
 
         this.players = new ArrayList<Player>();
 
+        this.box2dDebugRenderer = new Box2DDebugRenderer();
+
+        this.background = new Texture("assets/main.png");
+        this.backgroundSprite = new Sprite(this.background);
+
+        this.chef1 = new Texture("assets/chef1.png");
+        this.chef1Sprite = new Sprite(this.chef1);
+
         // Image loading
 
         // Sound and music loading
 
         // camera
         this.camera = new OrthographicCamera();
-        camera.setToOrtho(false,40,25);
+        camera.setToOrtho(false,1280,800);
 
         // world and map
         this.world = new World(new Vector2(0,0), false);
@@ -67,14 +84,40 @@ public class GameScreen implements Screen {
     }
 
     private void update() {
-        Vector3 position = camera.position;
-        position.x = Math.round(players.get(activePlayer).x * 32f * 10) / 10;
-        position.y = Math.round(players.get(activePlayer).y * 32f * 10) / 10;
-        camera.position.set(position);
+        //Vector3 position = camera.position;
+        //position.x = Math.round(players.get(activePlayer).x * 32f * 10) / 10;
+        //position.y = Math.round(players.get(activePlayer).y * 32f * 10) / 10;
+        //camera.position.set(position);
         camera.update();
 
         _parent.batch.setProjectionMatrix(camera.combined);
         _mapRenderer.setView(camera);
+    }
+
+    // Allows for forward and backward cycling of players without causing index out of bounds errors
+    private void cyclePlayer(int direction) {
+        Player current = players.get(activePlayer);
+        current.setActivePlayer(false);
+
+        int index = players.indexOf(current);
+        int length = players.size();
+        switch (direction) {
+            case 1:
+                index += 1;
+                if (index == length) {
+                    index = 0;
+                }
+                
+            case -1:
+                index -= 1;
+                if (index < 0) {
+                    index = length - 1;
+                }
+            default:
+                break;
+        }
+        activePlayer = index;
+        players.get(activePlayer).setActivePlayer(true);
     }
 
     @Override
@@ -87,11 +130,14 @@ public class GameScreen implements Screen {
 
         _parent.batch.begin();
 
+        backgroundSprite.draw(this._parent.batch);
+        for (Player chef : players) {
+            chef.render(this._parent.batch);
+        }
+
         _parent.batch.end();
 
         box2dDebugRenderer.render(world, camera.combined.scl(32f));
-        // User input
-        //      TODO: Write input handler
 
 
     }
@@ -100,6 +146,22 @@ public class GameScreen implements Screen {
     public void show() {
         // Starts the music when game starts
         // themeMusic.play();
+        Gdx.input.setInputProcessor(new InputAdapter() {
+            @Override
+            public boolean keyDown(int keycode) {
+                if (keycode == Input.Keys.E) {
+                    cyclePlayer(1);    
+                }
+                if (keycode == Input.Keys.Q) {
+                    cyclePlayer(-1);
+                }
+                if (keycode == Input.Keys.SPACE) {
+                    // some interact method here
+                }
+
+                return true;
+            }
+        });
     }
 
     @Override

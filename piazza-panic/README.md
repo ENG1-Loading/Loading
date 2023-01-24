@@ -29,12 +29,15 @@ For example, `core:clean` removes `build` folder only from the `core` project.
 
 ## TODO
 
-- Obtain Sprites
-- Dynamic sprite loader from level file
-- Write Classes for character sprites, counter tops, interactables
-- heart system
-- ticket system
-- customer system
-- Player control
-- switching chef system
-- ingredient collection
+- [x] Obtain Sprites
+- [x] Dynamic sprite loader from level file
+- [x] Write Class for player characters
+- [] Static bodies and collision
+- [] interactable static bodies
+- [] heart system
+- [] ticket system
+- [] customer system
+- [x] Player control
+- [x] switching chef system
+- [] ingredient collection
+- [] in game timer plus events
