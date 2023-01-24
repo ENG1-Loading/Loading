@@ -190,6 +190,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        // TODO
+        _parent.batch.dispose();
+        _parent.font.dispose();
     }
 }
