@@ -1,6 +1,6 @@
-* {
+.weekly-container {
     background-color: #242424;
-    color: rgb(206, 183, 183);
+    color: rgb(0, 0, 0);
 }
 
 .container {
@@ -9,4 +9,15 @@
     margin: 0 auto;
 
 }
+h1{
+    margin: 0;
+    color: white;
+}
 
+.vertical-timeline-element-title{
+
+}
+
+.gantt-chart{
+    width: 100%;
+}
