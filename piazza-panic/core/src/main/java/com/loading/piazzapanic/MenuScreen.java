@@ -5,6 +5,8 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MenuScreen implements Screen{
@@ -12,8 +14,14 @@ public class MenuScreen implements Screen{
     final Launcher _parent;
     OrthographicCamera camera;
 
+    Texture background;
+    Sprite backgroundSprite;
+
     public MenuScreen(final Launcher parent) {
         this._parent = parent;
+
+        this.background = new Texture("assets/menuScreen.png");
+        this.backgroundSprite = new Sprite(this.background);
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 800);
@@ -40,8 +48,7 @@ public class MenuScreen implements Screen{
         _parent.batch.setProjectionMatrix(camera.combined);
 
         _parent.batch.begin();
-        _parent.font.draw(_parent.batch, "Piazza Panic!", 100, 150);
-        _parent.font.draw(_parent.batch, "Press the SPACE key to start", 100, 100);
+        backgroundSprite.draw(_parent.batch);
         _parent.batch.end();
 
     }
