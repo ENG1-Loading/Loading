@@ -1,6 +1,5 @@
 import { ClipLoader } from "react-spinners"
 import "../static/home.css"
-import { useNavigate } from "react-router-dom"
 import jar from "../piazza-panic.jar"
 export default function Homepage() {
 
