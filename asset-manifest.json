@@ -1,20 +1,29 @@
 {
   "files": {
-    "main.css": "/Loading/static/css/main.3c7fcf9e.css",
-    "main.js": "/Loading/static/js/main.c9679d80.js",
+    "main.css": "/Loading/static/css/main.fa4cf2b7.css",
+    "main.js": "/Loading/static/js/main.d689cda1.js",
     "static/js/787.71e672d5.chunk.js": "/Loading/static/js/787.71e672d5.chunk.js",
-    "static/media/piazza-panic.jar": "/Loading/static/media/piazza-panic.49a8557a4cbdf85b881e.jar",
+    "static/media/week12.png": "/Loading/static/media/week12.4f113bb279dc5fbcc97d.png",
+    "static/media/week11.png": "/Loading/static/media/week11.7a43a0b15da4828f59aa.png",
+    "static/media/week13.png": "/Loading/static/media/week13.547226665596a160741c.png",
+    "static/media/week9.png": "/Loading/static/media/week9.90cc3d3a42513e229d03.png",
+    "static/media/week10.png": "/Loading/static/media/week10.7e0ff583332fddc99d36.png",
+    "static/media/week7.png": "/Loading/static/media/week7.3b0ce90ed7944444d649.png",
+    "static/media/week8.png": "/Loading/static/media/week8.3b0ce90ed7944444d649.png",
+    "static/media/week6.png": "/Loading/static/media/week6.e2053d0a2aa852f9efbc.png",
+    "static/media/week5.png": "/Loading/static/media/week5.cc992d23db8d6f96a05f.png",
+    "static/media/week4.png": "/Loading/static/media/week4.5df42263536600a5aae3.png",
+    "static/media/week3.png": "/Loading/static/media/week3.586deb3461a96cbf4c38.png",
+    "static/media/week2.png": "/Loading/static/media/week2.67b4b5adfb0076a40d76.png",
+    "static/media/Logo.png": "/Loading/static/media/Logo.deed6525b507e65b568b.png",
     "index.html": "/Loading/index.html",
-    "static/media/no.md": "/Loading/static/media/no.b0e06860217e75ed3480.md",
-    "static/media/ok.md": "/Loading/static/media/ok.daf9185cb210d46577e5.md",
-    "static/media/hello.md": "/Loading/static/media/hello.64ea4dfc9e05a0611cd6.md",
-    "static/media/empty.md": "/Loading/static/media/empty.31d6cfe0d16ae931b73c.md",
-    "main.3c7fcf9e.css.map": "/Loading/static/css/main.3c7fcf9e.css.map",
-    "main.c9679d80.js.map": "/Loading/static/js/main.c9679d80.js.map",
+    "static/media/piazza-panic.jar": "/Loading/static/media/piazza-panic.31d6cfe0d16ae931b73c.jar",
+    "main.fa4cf2b7.css.map": "/Loading/static/css/main.fa4cf2b7.css.map",
+    "main.d689cda1.js.map": "/Loading/static/js/main.d689cda1.js.map",
     "787.71e672d5.chunk.js.map": "/Loading/static/js/787.71e672d5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c7fcf9e.css",
-    "static/js/main.c9679d80.js"
+    "static/css/main.fa4cf2b7.css",
+    "static/js/main.d689cda1.js"
   ]
 }
