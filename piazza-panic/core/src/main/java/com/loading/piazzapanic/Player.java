@@ -12,6 +12,7 @@ public class Player extends Entity {
     Texture playerTexture;
     Sprite playerSprite;
 
+    // True if currently active chef
     boolean active;
 
     /* maybe switch to using enums

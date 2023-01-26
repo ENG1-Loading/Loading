@@ -21,18 +21,16 @@ public class GameOverScreenFail implements Screen {
     Label infoLabel;
     TextButton menuButton;
 
-    MenuScreen menu;
 
 
 
-    public GameOverScreenFail(long timeTaken, Launcher parent) {
+    public GameOverScreenFail(Launcher parent, long timeTaken) {
 
         this._parent = parent;
-        menu = new MenuScreen(parent);
         int screenWidth = Gdx.graphics.getWidth();
         int screenHeight = Gdx.graphics.getHeight();
         Table table = new Table();
-        stage = new Stage();
+        this.stage = new Stage();
         gameOverLabel = new Label("Game Over, it took you: "+timeTaken+"ms to run out of lives", new Label.LabelStyle(new BitmapFont(), Color.RED));
         infoLabel = new Label("To go back to menu press space :)", new Label.LabelStyle(new BitmapFont(), Color.GOLD));
         //TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
@@ -55,7 +53,7 @@ public class GameOverScreenFail implements Screen {
         //table.row();
         //table.add(menuButton).center();
         table.setPosition((screenWidth - table.getWidth()) / 2, (screenHeight - table.getHeight()) / 2);
-        stage.addActor(table);
+        this.stage.addActor(table);
 
     }
     @Override
@@ -104,6 +102,7 @@ public class GameOverScreenFail implements Screen {
 
     @Override
     public void dispose() {
-
+        _parent.batch.dispose();
+        _parent.font.dispose();
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="14">
- <tileset firstgid="1" source="../../../Room_Builder_free_32x32.tsx"/>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="15">
+ <tileset firstgid="1" source="Room_Builder_free_32x32.tsx"/>
  <tileset firstgid="392" source="Interiors_free_32x32.tsx"/>
  <tileset firstgid="1816" source="kitchen.tsx"/>
  <layer id="1" name="backdrop" width="40" height="25">
@@ -62,7 +62,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="colliders">
-  <object id="2" name="chef1" x="124.763" y="158.939" width="64" height="64"/>
+  <object id="2" name="chef1" x="128" y="160" width="64" height="64"/>
   <object id="3" name="serve_station" x="1120" y="512">
    <polygon points="0,0 160,0 160,32 0,32"/>
   </object>
@@ -96,5 +96,6 @@
   <object id="13" name="barrier6" x="1216" y="128">
    <polygon points="0,0 0,384 64,384 64,0"/>
   </object>
+  <object id="14" name="chef2" x="256" y="160" width="64" height="64"/>
  </objectgroup>
 </map>

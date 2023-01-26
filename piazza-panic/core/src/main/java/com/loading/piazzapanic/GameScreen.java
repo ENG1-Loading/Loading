@@ -32,9 +32,6 @@ public class GameScreen implements Screen {
     private HeartDisplay heartDisplay;
     private Box2DDebugRenderer box2dDebugRenderer;
 
-    private GameOverScreenFail gameOverScreenFail;
-
-    private GameOverScreenSuccess gameOverScreenSuccess;
     Texture background;
     Sprite backgroundSprite;
 
@@ -50,6 +47,7 @@ public class GameScreen implements Screen {
     int maxHearts = 6;
 
     long timeStarted = 0;
+    long elapsedTime;
 
 
     public GameScreen(final Launcher parent) {
@@ -146,9 +144,8 @@ public class GameScreen implements Screen {
             timeStarted = System.currentTimeMillis();
         }
 
-        long elapsedTime = (System.currentTimeMillis()- timeStarted) ;
-        gameOverScreenFail = new GameOverScreenFail(elapsedTime, this._parent);
-        gameOverScreenSuccess = new GameOverScreenSuccess(elapsedTime, this._parent);
+        elapsedTime = (System.currentTimeMillis()- timeStarted) ;
+
         //System.out.println("Elapsed time: " + elapsedTime + " milliseconds");
         ScreenUtils.clear(0, 0, 0.2f, 1);
 
@@ -190,14 +187,14 @@ public class GameScreen implements Screen {
                 if (keycode == Input.Keys.L) {
                     int currentHearts = heartDisplay.getNumHearts();
                     if (currentHearts < 1) {
-                        _parent.setScreen(gameOverScreenFail);
+                        _parent.setScreen(new GameOverScreenFail(_parent, elapsedTime));
                     }
                     System.out.println(currentHearts);
                     reduceHearts();
                 }
 
                 if (keycode == Input.Keys.N) {
-                    _parent.setScreen(gameOverScreenSuccess);
+                    _parent.setScreen(new GameOverScreenSuccess(_parent, elapsedTime));
                 }
 
                 return true;

@@ -16,18 +16,14 @@ public class GameOverScreenSuccess implements Screen {
     Label infoLabel;
     TextButton menuButton;
 
-    MenuScreen menu;
 
-
-
-    public GameOverScreenSuccess(long timeTaken, Launcher parent) {
+    public GameOverScreenSuccess(Launcher parent, long timeTaken) {
 
         this._parent = parent;
-        menu = new MenuScreen(parent);
         int screenWidth = Gdx.graphics.getWidth();
         int screenHeight = Gdx.graphics.getHeight();
         Table table = new Table();
-        stage = new Stage();
+        this.stage = new Stage();
         gameOverLabel = new Label("Game Over, it took you: "+timeTaken+" to complete the level", new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         infoLabel = new Label("To go back to menu press space :)", new Label.LabelStyle(new BitmapFont(), Color.GOLD));
 
@@ -37,7 +33,7 @@ public class GameOverScreenSuccess implements Screen {
         table.row();
         table.add(infoLabel).center();
         table.setPosition((screenWidth - table.getWidth()) / 2, (screenHeight - table.getHeight()) / 2);
-        stage.addActor(table);
+        this.stage.addActor(table);
 
     }
     @Override
@@ -86,6 +82,7 @@ public class GameOverScreenSuccess implements Screen {
 
     @Override
     public void dispose() {
-
+        _parent.batch.dispose();
+        _parent.font.dispose();
     }
 }

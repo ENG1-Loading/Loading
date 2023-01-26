@@ -29,4 +29,8 @@ public class HeartDisplay {
     public void reduceHearts(int amount) {
         numHearts = Math.max(numHearts - amount, 0);
     }
+
+    public void dispose() {
+        batch.dispose();
+    }
 }

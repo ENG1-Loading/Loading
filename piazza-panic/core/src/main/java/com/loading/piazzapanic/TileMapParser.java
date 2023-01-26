@@ -1,7 +1,5 @@
 package com.loading.piazzapanic;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
@@ -21,14 +19,10 @@ public class TileMapParser {
     private TiledMap _tiledMap;
     private GameScreen _gameScreen;
 
-    Texture chef1;
-    Sprite chef1Sprite;
-
 
     public TileMapParser(GameScreen gameScreen) {
         this._gameScreen = gameScreen;
-        this.chef1 = new Texture("assets/chef1.png");
-        this.chef1Sprite = new Sprite(chef1);
+
     }
 
     public OrthogonalTiledMapRenderer setupMap() {
@@ -66,15 +60,6 @@ public class TileMapParser {
                                 true, _gameScreen.getWorld()
                             );
                             _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef2, "assets/chef1.png"));
-                        case "chef3":
-                            Body chef3 = BodyContainer.createBody(
-                                rectangle.getX() + rectangle.getWidth() / 2, 
-                                rectangle.getY() + rectangle.getHeight() / 2, 
-                                rectangle.getWidth(), 
-                                rectangle.getHeight(), 
-                                true, _gameScreen.getWorld()
-                            );
-                            _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef3, "assets/chef1.png"));
                         default:
                             break;
                     }
