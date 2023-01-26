@@ -14,6 +14,10 @@ public class HeartDisplay {
         this.batch = new SpriteBatch();
     }
 
+    public int getNumHearts() {
+        return numHearts;
+    }
+
     public void render() {
         batch.begin();
         for (int i = 0; i < numHearts; i++) {
