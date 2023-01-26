@@ -29,6 +29,7 @@ public class GameScreen implements Screen {
     private OrthogonalTiledMapRenderer _mapRenderer;
     private TileMapParser _tileMapper;
 
+    private HeartDisplay heartDisplay;
     private Box2DDebugRenderer box2dDebugRenderer;
 
     Texture background;
@@ -41,6 +42,9 @@ public class GameScreen implements Screen {
     int activePlayer;
 
     World world;
+
+    Texture heartTexture;
+    int maxHearts = 6;
 
 
     public GameScreen(final Launcher parent) {
@@ -56,16 +60,18 @@ public class GameScreen implements Screen {
         this.chef1 = new Texture("assets/chef1.png");
         this.chef1Sprite = new Sprite(this.chef1);
 
+        this.heartTexture = new Texture("assets/heart.png");
+        this.heartDisplay = new HeartDisplay(this.maxHearts, this.heartTexture);
         // Image loading
 
         // Sound and music loading
 
         // camera
         this.camera = new OrthographicCamera();
-        camera.setToOrtho(false,1280,800);
+        camera.setToOrtho(false, 1280, 800);
 
         // world and map
-        this.world = new World(new Vector2(0,0), false);
+        this.world = new World(new Vector2(0, 0), false);
         this._tileMapper = new TileMapParser(this);
         this._mapRenderer = _tileMapper.setupMap();
 
@@ -84,17 +90,18 @@ public class GameScreen implements Screen {
     }
 
     private void update() {
-        //Vector3 position = camera.position;
-        //position.x = Math.round(players.get(activePlayer).x * 32f * 10) / 10;
-        //position.y = Math.round(players.get(activePlayer).y * 32f * 10) / 10;
-        //camera.position.set(position);
+        // Vector3 position = camera.position;
+        // position.x = Math.round(players.get(activePlayer).x * 32f * 10) / 10;
+        // position.y = Math.round(players.get(activePlayer).y * 32f * 10) / 10;
+        // camera.position.set(position);
         camera.update();
 
         _parent.batch.setProjectionMatrix(camera.combined);
         _mapRenderer.setView(camera);
     }
 
-    // Allows for forward and backward cycling of players without causing index out of bounds errors
+    // Allows for forward and backward cycling of players without causing index out
+    // of bounds errors
     private void cyclePlayer(int direction) {
         Player current = players.get(activePlayer);
         current.setActivePlayer(false);
@@ -107,7 +114,7 @@ public class GameScreen implements Screen {
                 if (index == length) {
                     index = 0;
                 }
-                
+
             case -1:
                 index -= 1;
                 if (index < 0) {
@@ -118,6 +125,10 @@ public class GameScreen implements Screen {
         }
         activePlayer = index;
         players.get(activePlayer).setActivePlayer(true);
+    }
+
+    public void reduceHearts() {
+        this.heartDisplay.reduceHearts(1);
     }
 
     @Override
@@ -139,7 +150,7 @@ public class GameScreen implements Screen {
 
         box2dDebugRenderer.render(world, camera.combined.scl(32f));
 
-
+        heartDisplay.render();
     }
 
     @Override
@@ -150,13 +161,17 @@ public class GameScreen implements Screen {
             @Override
             public boolean keyDown(int keycode) {
                 if (keycode == Input.Keys.E) {
-                    cyclePlayer(1);    
+                    cyclePlayer(1);
                 }
                 if (keycode == Input.Keys.Q) {
                     cyclePlayer(-1);
                 }
                 if (keycode == Input.Keys.SPACE) {
                     // some interact method here
+                }
+
+                if (keycode == Input.Keys.L) {
+                    reduceHearts();
                 }
 
                 return true;
