@@ -111,22 +111,13 @@ public class GameScreen implements Screen {
 
         int index = players.indexOf(current);
         int length = players.size();
-        switch (direction) {
-            case 1:
-                index += 1;
-                if (index == length) {
-                    index = 0;
-                }
-
-            case -1:
-                index -= 1;
-                if (index < 0) {
-                    index = length - 1;
-                }
-            default:
-                break;
+        if (direction > 0) {
+            index += 1;
+            if (index == length) index = 0;
+        } else {
+            index -= 1;
+            if (index < 0) index = length - 1;
         }
-        System.out.println("Setting active player to : " + index);
         activePlayer = index;
         players.get(activePlayer).setActivePlayer(true);
     }
@@ -163,7 +154,6 @@ public class GameScreen implements Screen {
 
         _parent.batch.end();
 
-        box2dDebugRenderer.render(world, camera.combined.scl(32f));
 
         heartDisplay.render();
     }
@@ -196,6 +186,11 @@ public class GameScreen implements Screen {
 
                 if (keycode == Input.Keys.N) {
                     _parent.setScreen(new GameOverScreenSuccess(_parent, elapsedTime));
+                }
+
+                if (keycode == Input.Keys.ESCAPE) {
+                    Gdx.app.exit();
+                    System.exit(-1);
                 }
 
                 return true;
