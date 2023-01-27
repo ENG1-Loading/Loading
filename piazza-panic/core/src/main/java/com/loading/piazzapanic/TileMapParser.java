@@ -49,7 +49,7 @@ public class TileMapParser {
                                 rectangle.getHeight(), 
                                 false, _gameScreen.getWorld()
                             );
-                            _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef1, "assets/chef1.png"));
+                            _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef1, "assets/chef1.png", rectangle.getX() + rectangle.getWidth() / 2,rectangle.getY() + rectangle.getHeight() / 2));
                             _gameScreen.setActivePlayer(0);
                         case "chef2":
                             Body chef2 = BodyContainer.createBody(
@@ -59,7 +59,13 @@ public class TileMapParser {
                                 rectangle.getHeight(), 
                                 true, _gameScreen.getWorld()
                             );
-                            _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef2, "assets/chef1.png"));
+
+                            System.out.println("x : " + (rectangle.getX() + rectangle.getWidth() / 2));
+                            System.out.println("position x: "+chef2.getPosition().x);
+                            System.out.println("y : " + rectangle.getY() + rectangle.getHeight() / 2);
+                            System.out.println("position y: "+chef2.getPosition().y);
+
+                            _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef2, "assets/chef1.png",rectangle.getX() + rectangle.getWidth() / 2, rectangle.getY() + rectangle.getHeight() / 2 ));
                         default:
                             break;
                     }

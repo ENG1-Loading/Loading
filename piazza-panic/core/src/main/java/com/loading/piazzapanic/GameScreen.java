@@ -64,7 +64,7 @@ public class GameScreen implements Screen {
         this.chef1Sprite = new Sprite(this.chef1);
 
         this.heartTexture = new Texture("assets/heart.png");
-        this.heartDisplay = new HeartDisplay(this.maxHearts, this.heartTexture);
+        this.heartDisplay = new HeartDisplay(_parent, this.maxHearts, this.heartTexture);
         // Image loading
 
         // Sound and music loading
@@ -126,6 +126,7 @@ public class GameScreen implements Screen {
             default:
                 break;
         }
+        System.out.println("Setting active player to : " + index);
         activePlayer = index;
         players.get(activePlayer).setActivePlayer(true);
     }

@@ -2,16 +2,18 @@ package com.loading.piazzapanic;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class HeartDisplay {
+    final Launcher _parent;
     private Texture heartTexture;
     private int numHearts;
     private int maxHearts;
     private SpriteBatch batch;
 
-    public HeartDisplay(int maxHearts, Texture heartTexture) {
+    public HeartDisplay(Launcher parent, int maxHearts, Texture heartTexture) {
+        this._parent = parent;
         this.maxHearts = maxHearts;
         this.numHearts = maxHearts;
         this.heartTexture = heartTexture;
-        this.batch = new SpriteBatch();
+        this.batch = _parent.batch;
     }
 
     public int getNumHearts() {

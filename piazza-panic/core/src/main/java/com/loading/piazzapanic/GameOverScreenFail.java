@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class GameOverScreenFail implements Screen {
@@ -23,7 +24,6 @@ public class GameOverScreenFail implements Screen {
 
 
 
-
     public GameOverScreenFail(Launcher parent, long timeTaken) {
 
         this._parent = parent;
@@ -33,43 +33,30 @@ public class GameOverScreenFail implements Screen {
         this.stage = new Stage();
         gameOverLabel = new Label("Game Over, it took you: "+timeTaken+"ms to run out of lives", new Label.LabelStyle(new BitmapFont(), Color.RED));
         infoLabel = new Label("To go back to menu press space :)", new Label.LabelStyle(new BitmapFont(), Color.GOLD));
-        //TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
-        //style.up = new TextureRegionDrawable(new TextureRegion(new Texture("button.png")));
-        //style.down = new TextureRegionDrawable(new TextureRegion(new Texture("button_down.png")));
-        //style.font = new BitmapFont();
-        //style.fontColor = Color.WHITE;
-        //menuButton = new TextButton("Menu", style);
-        //menuButton.addListener(new InputListener() {
-        //    @Override
-        //    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-        //        // Code to handle the button click event
-        //        _parent.setScreen(menu);
-        //        return true;
-        //    }
-        //    });
+        TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
+        style.up = new TextureRegionDrawable(new TextureRegion(new Texture("button.png")));
+        style.down = new TextureRegionDrawable(new TextureRegion(new Texture("button_down.png")));
+        style.font = new BitmapFont();
+        style.fontColor = Color.WHITE;
+        menuButton = new TextButton("Menu", style);
+        menuButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                _parent.setScreen(new MenuScreen(_parent));
+            }
+        });
         table.add(gameOverLabel).center();
         table.row();
         table.add(infoLabel).center();
-        //table.row();
-        //table.add(menuButton).center();
+        table.row();
+        table.add(menuButton).center();
         table.setPosition((screenWidth - table.getWidth()) / 2, (screenHeight - table.getHeight()) / 2);
         this.stage.addActor(table);
 
     }
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(new InputAdapter() {
-            @Override
-            public boolean keyDown(int keycode) {
-                if (keycode == Input.Keys.SPACE) {
-                    _parent.setScreen(new MenuScreen(_parent));
-                }
-                if (keycode == Input.Keys.A) {
-                    System.out.println("aaaa");
-                }
-                return true;
-            }
-        });
+        Gdx.input.setInputProcessor(stage);
     }
 
     public void render(float delta) {
