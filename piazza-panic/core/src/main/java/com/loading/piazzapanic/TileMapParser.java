@@ -40,6 +40,7 @@ public class TileMapParser {
                 String recName = obj.getName();
 
                 if (recName.contains("chef")) {
+                    System.out.println(recName);
                     switch (recName) {
                         case "chef1":
                             Body chef1 = BodyContainer.createBody(
@@ -50,7 +51,6 @@ public class TileMapParser {
                                 false, _gameScreen.getWorld()
                             );
                             _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef1, "assets/chef1.png", rectangle.getX() + rectangle.getWidth() / 2,rectangle.getY() + rectangle.getHeight() / 2));
-                            _gameScreen.setActivePlayer(0);
                         case "chef2":
                             Body chef2 = BodyContainer.createBody(
                                 rectangle.getX() + rectangle.getWidth() / 2, 

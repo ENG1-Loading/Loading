@@ -7,7 +7,10 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 public class BodyContainer {
-    
+ 
+    private static short PHYSICS_ENTITY = 0x01;
+    private static short WORLD_ENTITY = 0x02;
+
     public static Body createBody(float x, float y, float width, float height, boolean isStatic, World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = isStatic ? BodyDef.BodyType.StaticBody : BodyDef.BodyType.DynamicBody;
@@ -20,6 +23,8 @@ public class BodyContainer {
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
+        fixtureDef.filter.categoryBits = isStatic ? WORLD_ENTITY : PHYSICS_ENTITY;
+        fixtureDef.filter.maskBits = isStatic ? PHYSICS_ENTITY : WORLD_ENTITY;
         body.createFixture(fixtureDef);
         shape.dispose();
         

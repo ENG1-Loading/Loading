@@ -42,6 +42,7 @@ public class GameScreen implements Screen {
     int activePlayer;
 
     World world;
+    ListenerHelper listener;
 
     Texture heartTexture;
     int maxHearts = 6;
@@ -55,13 +56,15 @@ public class GameScreen implements Screen {
 
         this.players = new ArrayList<Player>();
 
+        this.activePlayer = 0;
+
         this.box2dDebugRenderer = new Box2DDebugRenderer();
 
         this.background = new Texture("assets/main.png");
         this.backgroundSprite = new Sprite(this.background);
 
-        this.chef1 = new Texture("assets/chef1.png");
-        this.chef1Sprite = new Sprite(this.chef1);
+        //this.chef1 = new Texture("assets/chef1.png");
+        //this.chef1Sprite = new Sprite(this.chef1);
 
         this.heartTexture = new Texture("assets/heart.png");
         this.heartDisplay = new HeartDisplay(_parent, this.maxHearts, this.heartTexture);
@@ -75,6 +78,9 @@ public class GameScreen implements Screen {
 
         // world and map
         this.world = new World(new Vector2(0, 0), false);
+        this.listener = new ListenerHelper();
+        world.setContactListener(listener);
+
         this._tileMapper = new TileMapParser(this);
         this._mapRenderer = _tileMapper.setupMap();
 
@@ -154,8 +160,11 @@ public class GameScreen implements Screen {
 
         _parent.batch.end();
 
+        box2dDebugRenderer.render(world, camera.combined.scl(32f));
 
         heartDisplay.render();
+
+        world.step(delta, 0, 2);
     }
 
     @Override
