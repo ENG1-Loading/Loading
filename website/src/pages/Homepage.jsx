@@ -1,18 +1,13 @@
 import { ClipLoader } from "react-spinners"
 import "../static/home.css"
 import jar from "../piazza-panic.jar"
+import AnimatedLogo from "../SharedComponents/AnimatedLogo";
+import Header from "../SharedComponents/Header";
 export default function Homepage() {
 
     return (
         <div>
-            <h1><u>Loading...</u><ClipLoader
-                color="#FFFFFF"
-                loading={true}
-                
-                size={20}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-            /></h1>
+            <Header title={'Piazza Panic'} />
             <div className="parent">
             <div className="boxParent">
                 <div className="boxChild">
