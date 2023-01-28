@@ -36,6 +36,7 @@ public class Player extends Entity {
         this.arrowSprite = new Sprite(arrowTexture);
         this.playerSprite.setScale(2); // scaled up by 2
         this.body.setUserData(playerSprite);
+
     }
 
     @Override

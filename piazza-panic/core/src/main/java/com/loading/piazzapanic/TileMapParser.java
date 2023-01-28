@@ -33,26 +33,31 @@ public class TileMapParser {
     }
 
     public void parseObjects(MapObjects mapObjects) {
+        System.out.println("AKkld:sl:asdk:asldkL;");
+
         for (MapObject obj : mapObjects) {
             // Chef Player Characters
             if (obj instanceof RectangleMapObject) {
                 Rectangle rectangle = ((RectangleMapObject)obj).getRectangle();
                 String recName = obj.getName();
                 if (_gameScreen.players.size() >= 2) {
-
                 } else {
+
                     if (recName.contains("chef")) {
-                        System.out.println(recName);
                         switch (recName) {
                             case "chef1":
-                                Body chef1 = BodyContainer.createBody(
-                                        rectangle.getX() + rectangle.getWidth() / 2,
-                                        rectangle.getY() + rectangle.getHeight() / 2,
-                                        rectangle.getWidth(),
-                                        rectangle.getHeight(),
-                                        false, _gameScreen.getWorld()
-                                );
-                                _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef1, "assets/chef1.png", rectangle.getX() + rectangle.getWidth() / 2,rectangle.getY() + rectangle.getHeight() / 2));
+                                if (_gameScreen.players.size() == 1 ) {
+
+                                    Body chef1 = BodyContainer.createBody(
+                                            rectangle.getX() + rectangle.getWidth() / 2,
+                                            rectangle.getY() + rectangle.getHeight() / 2,
+                                            rectangle.getWidth(),
+                                            rectangle.getHeight(),
+                                            false, _gameScreen.getWorld()
+                                    );
+                                    _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef1, "assets/chef1.png", (rectangle.getX() + rectangle.getWidth() / 2) + 50,rectangle.getY() + rectangle.getHeight() / 2));
+
+                                }
                             case "chef2":
                                 Body chef2 = BodyContainer.createBody(
                                         rectangle.getX() + rectangle.getWidth() / 2,

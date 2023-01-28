@@ -92,6 +92,9 @@ public class GameScreen implements Screen {
 
     public void addPlayer(Player player) {
         players.add(player);
+        if (players.size() == 1) {
+            players.get(0).setActivePlayer(true);
+        }
     }
 
     public void setActivePlayer(int index) {
