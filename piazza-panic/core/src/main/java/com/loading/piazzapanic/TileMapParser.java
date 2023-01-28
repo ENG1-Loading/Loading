@@ -22,7 +22,7 @@ public class TileMapParser {
 
     public TileMapParser(GameScreen gameScreen) {
         this._gameScreen = gameScreen;
-
+        _gameScreen.world.setContactListener(new ContactListener());
     }
 
     public OrthogonalTiledMapRenderer setupMap() {
@@ -38,42 +38,42 @@ public class TileMapParser {
             if (obj instanceof RectangleMapObject) {
                 Rectangle rectangle = ((RectangleMapObject)obj).getRectangle();
                 String recName = obj.getName();
+                if (_gameScreen.players.size() >= 2) {
 
-                if (recName.contains("chef")) {
-                    System.out.println(recName);
-                    switch (recName) {
-                        case "chef1":
-                            Body chef1 = BodyContainer.createBody(
-                                rectangle.getX() + rectangle.getWidth() / 2, 
-                                rectangle.getY() + rectangle.getHeight() / 2, 
-                                rectangle.getWidth(), 
-                                rectangle.getHeight(), 
-                                false, _gameScreen.getWorld()
-                            );
-                            _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef1, "assets/chef1.png", rectangle.getX() + rectangle.getWidth() / 2,rectangle.getY() + rectangle.getHeight() / 2));
-                        case "chef2":
-                            Body chef2 = BodyContainer.createBody(
-                                rectangle.getX() + rectangle.getWidth() / 2, 
-                                rectangle.getY() + rectangle.getHeight() / 2, 
-                                rectangle.getWidth(), 
-                                rectangle.getHeight(), 
-                                true, _gameScreen.getWorld()
-                            );
+                } else {
+                    if (recName.contains("chef")) {
+                        System.out.println(recName);
+                        switch (recName) {
+                            case "chef1":
+                                Body chef1 = BodyContainer.createBody(
+                                        rectangle.getX() + rectangle.getWidth() / 2,
+                                        rectangle.getY() + rectangle.getHeight() / 2,
+                                        rectangle.getWidth(),
+                                        rectangle.getHeight(),
+                                        false, _gameScreen.getWorld()
+                                );
+                                _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef1, "assets/chef1.png", rectangle.getX() + rectangle.getWidth() / 2,rectangle.getY() + rectangle.getHeight() / 2));
+                            case "chef2":
+                                Body chef2 = BodyContainer.createBody(
+                                        rectangle.getX() + rectangle.getWidth() / 2,
+                                        rectangle.getY() + rectangle.getHeight() / 2,
+                                        rectangle.getWidth(),
+                                        rectangle.getHeight(),
+                                        true, _gameScreen.getWorld()
+                                );
 
-                            System.out.println("x : " + (rectangle.getX() + rectangle.getWidth() / 2));
-                            System.out.println("position x: "+chef2.getPosition().x);
-                            System.out.println("y : " + rectangle.getY() + rectangle.getHeight() / 2);
-                            System.out.println("position y: "+chef2.getPosition().y);
+                                _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef2, "assets/chef1.png",rectangle.getX() + rectangle.getWidth() / 2, rectangle.getY() + rectangle.getHeight() / 2 ));
+                            default:
+                                break;
+                        }
+                }
 
-                            _gameScreen.addPlayer(new Player(rectangle.getWidth(), rectangle.getHeight(), chef2, "assets/chef1.png",rectangle.getX() + rectangle.getWidth() / 2, rectangle.getY() + rectangle.getHeight() / 2 ));
-                        default:
-                            break;
-                    }
                 }
                 
             }
             // static counter tops / interactable tops
             if (obj instanceof PolygonMapObject) {
+                System.out.println("Static object created");
                 createStaticObject((PolygonMapObject)obj);
             }
         }
@@ -85,7 +85,7 @@ public class TileMapParser {
         Body body = _gameScreen.getWorld().createBody(bodyDef);
         Shape shape = createPolygonShape(polygonMapObject);
         body.createFixture(shape, 1000);
-        shape.dispose();    
+        shape.dispose();
     }
 
     // helper to get the shape of the polygon object for the body

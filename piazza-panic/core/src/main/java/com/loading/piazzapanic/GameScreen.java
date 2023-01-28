@@ -79,7 +79,7 @@ public class GameScreen implements Screen {
         // world and map
         this.world = new World(new Vector2(0, 0), false);
         this.listener = new ListenerHelper();
-        world.setContactListener(listener);
+        world.setContactListener(new ContactListener());
 
         this._tileMapper = new TileMapParser(this);
         this._mapRenderer = _tileMapper.setupMap();

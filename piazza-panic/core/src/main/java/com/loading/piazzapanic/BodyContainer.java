@@ -14,7 +14,7 @@ public class BodyContainer {
     public static Body createBody(float x, float y, float width, float height, boolean isStatic, World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = isStatic ? BodyDef.BodyType.StaticBody : BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(x / 32f, y / 32f);
+        bodyDef.position.set(x , y );
         bodyDef.fixedRotation = true;
         Body body = world.createBody(bodyDef);
 

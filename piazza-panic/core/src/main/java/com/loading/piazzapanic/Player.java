@@ -40,8 +40,7 @@ public class Player extends Entity {
 
     @Override
     public void update() {
-        x = body.getPosition().x * 32f;
-        y = body.getPosition().y * 32f;
+
 
 
 
@@ -49,17 +48,56 @@ public class Player extends Entity {
 
     @Override
     public void render(SpriteBatch batch) {
-        playerSprite.setX(x);
-        playerSprite.setY(y); 
+        playerSprite.setPosition(body.getPosition().x, body.getPosition().y);
+        // this was used to get user position for boundaries
+        //if (active) {
+        //    System.out.println("X: "+ body.getPosition().x);
+        //    System.out.println("Y: " + body.getPosition().y);
+        //}
+
         playerSprite.draw(batch);
 
+
         if (active) {
-            arrowSprite.setX(x-5); // render the arrow after the player and position it above
-            arrowSprite.setY(y + (playerSprite.getHeight()) +10);
+            arrowSprite.setX(body.getPosition().x-5); // render the arrow after the player and position it above
+            arrowSprite.setY(body.getPosition().y + (playerSprite.getHeight()) +10);
             arrowSprite.draw(batch);
         }
+
         doUserInput();
 
+    }
+
+    private Boolean isColliding(float x,float y) {
+        /* coords
+        * counter
+        * Right top:
+        * X: 265.0
+          Y: 523.0
+          *
+        * Right bottom:
+        *X: 265.0
+          Y: 433.0
+          Left top:
+          * X: 865.0
+            Y: 528.0
+          Left bottom:
+          * X: 865.0
+            Y: 433.0
+          Left side:
+          * X: 65.0
+            Y: 323.0
+          Right side:
+          * X: 1195.0
+            Y: 323.0
+          Bottom:
+          * X: 1195.0
+            Y: 303.0
+          Top:
+          * X: 1145.0
+            Y: 623.0
+        * */
+        return !(y > 623) && !(y < 303) && !(x > 1195) && !(x < 65) && (!(y < 528) || !(y > 433) || !(x > 65) || !(x > 255.0) || !(x < 870));
     }
 
     private void doUserInput() {
@@ -79,16 +117,26 @@ public class Player extends Entity {
         //}
         if (active) {
             if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-                x -= speed;
+                if (isColliding(body.getPosition().x - speed,body.getPosition().y )) {
+                    body.setTransform(body.getPosition().x - speed, body.getPosition().y, body.getAngle());
+                }
+
             }
             if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-                x += speed;
+                if (isColliding(body.getPosition().x + speed, body.getPosition().y)) {
+                    body.setTransform(body.getPosition().x + speed, body.getPosition().y, body.getAngle());
+                }
+
             }
             if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-                y += speed;
+                if (isColliding(body.getPosition().x, body.getPosition().y + speed)) {
+                    body.setTransform(body.getPosition().x, body.getPosition().y + speed, body.getAngle());
+                }
             }
             if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-                y -= speed;
+                if (isColliding(body.getPosition().x, body.getPosition().y - speed)) {
+                    body.setTransform(body.getPosition().x, body.getPosition().y - speed, body.getAngle());
+                }
             }
         }
         //System.out.println("Vx : " + velX * speed + " Vy : " + velY * speed);
