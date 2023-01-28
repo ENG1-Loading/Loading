@@ -1,8 +1,7 @@
-import { ClipLoader } from "react-spinners"
 import "../static/home.css"
 import jar from "../piazza-panic.jar"
-import AnimatedLogo from "../SharedComponents/AnimatedLogo";
 import Header from "../SharedComponents/Header";
+import {Link} from "react-router-dom";
 export default function Homepage() {
 
     return (
@@ -15,7 +14,9 @@ export default function Homepage() {
                         <div className="boxContent">
                             <h3>Deliverables</h3>
                             <p>Click the button below to be redirected to our page with the pdfs to all deliverables</p>
-                            <button>Go to page</button>                       
+                            <Link to="/deliverables">
+                            <button>Go to page</button>
+                            </Link>
                         </div>
                     </div>
                     <div className="box">
@@ -33,10 +34,9 @@ export default function Homepage() {
                     <div className="boxContent">
                             <h3>Version control</h3>
                             <p>Please click the button to be redirected to our page which has the version control history of our repository</p>
-                            <button onClick={(e) => {
-                                e.preventDefault()
-                                window.open(`${process.env.PUBLIC_URL}/version_control`, "_blank")
-                            }}>Go to page</button>
+                        <Link to="/version_control">
+                            <button>Go to page</button>
+                        </Link>
                         </div>
 
                     </div>
@@ -54,10 +54,9 @@ export default function Homepage() {
                     <div className="boxContent">
                             <h3>Risk Management</h3>
                             <p>Please click the button to be redirected to our page which has the risk management table</p>
-                            <button onClick={(e) => {
-                                e.preventDefault()
-                                window.open( `${process.env.PUBLIC_URL}/risk_assessment`, "_blank")
-                            }}>Go to page</button>
+                        <Link to={"/risk_management"}>
+                        <button >Go to page</button>
+                        </Link>
                         </div>
 
                     </div>
@@ -65,12 +64,10 @@ export default function Homepage() {
                     <div className="boxContent">
                             <h3>Notes</h3>
                             <p>Please click the button to be redirected to our page which has all the notes</p>
-                            <button onClick={(e) => {
-                                e.preventDefault()
-                                window.open(`${process.env.PUBLIC_URL}/notes`, "_blank")
-                            }}>Go to page</button>
+                        <Link to={"/notes"}>
+                            <button >Go to page</button>
+                        </Link>
                         </div>
-
                     </div>
 
             </div>

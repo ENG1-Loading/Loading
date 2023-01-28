@@ -48,7 +48,7 @@ const Logo = () => {
 
     return (
 
-        <a className="logo-wrapper" href={'/'}>
+        <a className="logo-wrapper" href={'/Loading'}>
             {/*redirect to home if clicked*/}
             <IconLoader />
 

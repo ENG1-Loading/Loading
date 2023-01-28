@@ -4,11 +4,12 @@ import '../static/weekly.css'
 import React from 'react';
 import Logo from "../Logo";
 import {Notes} from '../content/Notes';
+import Header from "../SharedComponents/Header";
 const WeeklyNotes = () => {
     return (
         <div className={'weekly-container'}>
-            <h1>Weekly Notes</h1>
-            <VerticalTimeline layout="1-column-left"
+            <Header title={'Weekly Notes'} buttonName={'Download PDF'} file={'weekly.pdf'} />
+            <VerticalTimeline
             >
                 {/*    weekly notes*/}
                 {Notes().map((note, index) => {
@@ -20,7 +21,7 @@ const WeeklyNotes = () => {
                             date={note.date}
                             // iconStyle={{background: 'rgb(255,255,255)', color: '#0e0e0e'}}
                             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                            icon={<Logo height={'40px'} width={'40px'}/>}
+                            icon={<Logo height={'60px'} width={'60px'}/>}
                         >
                             <h3 className="vertical-timeline-element-title">{note.title}</h3>
                             <p className={'weekly-note'}>

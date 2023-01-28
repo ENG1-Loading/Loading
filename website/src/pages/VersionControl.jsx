@@ -1,9 +1,10 @@
 import { Gitgraph, templateExtend } from "@gitgraph/react";
+import Header from "../SharedComponents/Header";
 
 export default function VersionControl() {
   let options = {
     template: templateExtend("metro", {
-      colors: ["gray", "blue", "turquoise", "darkgreen", "yellowgreen", "navy"],
+      colors: ["gray", "#FFA500", "#FF69B4", "#00FF00", "#FFFF00", "#87CEFA"],
       commit: {
         message: {
           displayAuthor: false,
@@ -14,7 +15,8 @@ export default function VersionControl() {
   };
     return (
       <>
-        <h1>Git history of our repository</h1>
+        <Header title={'Git History'} buttonName={'Github Repo'} link={'https://github.com/ENG1-Loading/Loading'}/>
+        <div style={{marginBottom: '20px'}}></div>
       <Gitgraph options={options}>
         {(gitgraph) => {
           // Simulate git commands with Gitgraph API.
