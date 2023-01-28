@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Loading/static/css/main.fa4cf2b7.css",
-    "main.js": "/Loading/static/js/main.d689cda1.js",
+    "main.css": "/Loading/static/css/main.0bf9dec9.css",
+    "main.js": "/Loading/static/js/main.84f4934f.js",
     "static/js/787.71e672d5.chunk.js": "/Loading/static/js/787.71e672d5.chunk.js",
     "static/media/week12.png": "/Loading/static/media/week12.4f113bb279dc5fbcc97d.png",
     "static/media/week11.png": "/Loading/static/media/week11.7a43a0b15da4828f59aa.png",
@@ -15,15 +15,15 @@
     "static/media/week4.png": "/Loading/static/media/week4.5df42263536600a5aae3.png",
     "static/media/week3.png": "/Loading/static/media/week3.586deb3461a96cbf4c38.png",
     "static/media/week2.png": "/Loading/static/media/week2.67b4b5adfb0076a40d76.png",
-    "static/media/Logo.png": "/Loading/static/media/Logo.deed6525b507e65b568b.png",
+    "static/media/Logo.png": "/Loading/static/media/Logo.3ccab85d9d794ebfcc7b.png",
     "index.html": "/Loading/index.html",
     "static/media/piazza-panic.jar": "/Loading/static/media/piazza-panic.31d6cfe0d16ae931b73c.jar",
-    "main.fa4cf2b7.css.map": "/Loading/static/css/main.fa4cf2b7.css.map",
-    "main.d689cda1.js.map": "/Loading/static/js/main.d689cda1.js.map",
+    "main.0bf9dec9.css.map": "/Loading/static/css/main.0bf9dec9.css.map",
+    "main.84f4934f.js.map": "/Loading/static/js/main.84f4934f.js.map",
     "787.71e672d5.chunk.js.map": "/Loading/static/js/787.71e672d5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa4cf2b7.css",
-    "static/js/main.d689cda1.js"
+    "static/css/main.0bf9dec9.css",
+    "static/js/main.84f4934f.js"
   ]
 }
