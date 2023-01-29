@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import RiskAssessment from "./pages/RiskManagement";
 import VersionControl from "./pages/VersionControl";
 import NotFound from "./pages/NotFound";
+import Architecture from "./SharedComponents/architecture/Architecture";
 const Main = () => {
     return (
         <Routes>
@@ -12,9 +13,11 @@ const Main = () => {
             <Route exact path="/" element={<Homepage />}></Route>
             <Route exact path="/risk_assessment" element={<RiskAssessment />}> </Route>
             <Route exact path="/version_control" element={<VersionControl />}></Route>
+            <Route exact path="/architecture" element={<Architecture />}></Route>
+
         {/*    404*/}
             <Route path="*" element={<NotFound />}></Route>
-        </Routes>   
+        </Routes>
     )
 }
 export default Main;

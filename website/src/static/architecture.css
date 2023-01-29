@@ -1,0 +1,14 @@
+.class-diagram{
+    width: 80%;
+}
+.img-fluid{
+    width:70%
+}
+.image-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+}

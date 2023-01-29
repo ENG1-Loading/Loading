@@ -44,7 +44,9 @@ export default function Homepage() {
                     <div className="boxContent">
                             <h3>Architecture & Method selection</h3>
                             <p>Please click the button below to be redirected to our page which contains explaining/reasoning behind why we chose specific technologies</p>
+                        <Link to={"/architecture"}>
                             <button>Go to page</button>
+                        </Link>
                         </div>
                     </div>
                 </div>
@@ -71,9 +73,9 @@ export default function Homepage() {
                     </div>
 
             </div>
-            
+
             </div>
-            
+
 
 
         </div>
