@@ -158,7 +158,7 @@ export const risks = [
         Description: "Limited team size",
         Likelihood: "H",
         Severity: "M",
-        Mitigation: "Allocate tasks and responsibilities effectively, and consider outsourcing or seeking help from other students",
+        Mitigation: "Allocate tasks and responsibilities effective to ensure all team members are contributing to the project",
         Owner: "Everyone"
     },
     ]
