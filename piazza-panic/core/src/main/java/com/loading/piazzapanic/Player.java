@@ -27,6 +27,16 @@ public class Player extends Entity {
     }
     */
 
+    /*
+    * Initialises player object with the given arguments
+    *
+    * @param width the width to spawn the player-sprite width
+    * @param height the height to spawn the player-sprite with
+    * @param body the body data to give the sprite
+    * @param path the path to the texture of the sprite
+    * @param posx the positional x to spawn the sprite at
+    * @param posy the positional y to spawn the sprite at
+    * */
     public Player(float width, float height, Body body, String path, float posx, float posy) {
         super(width, height, body, posx, posy);
         this.speed = 5f;
@@ -41,12 +51,13 @@ public class Player extends Entity {
 
     @Override
     public void update() {
-
-
-
-
     }
 
+    /*
+    * Render the character with the initialised values
+    *
+    * @param batch the batch data to supply the renderer with
+    * */
     @Override
     public void render(SpriteBatch batch) {
         playerSprite.setPosition(body.getPosition().x, body.getPosition().y);
@@ -69,6 +80,14 @@ public class Player extends Entity {
 
     }
 
+    /*
+    * Checks if the sprite is currently on any x or y coordinates that would collide with objects that it shouldn't
+    *
+    * @param x the current x-coordinate of the sprite
+    * @param y the current y-coordinate of the sprite
+    *
+    * @return Boolean if the sprite is currently colliding or not
+    * */
     private Boolean isColliding(float x,float y) {
         /* coords
         * counter
@@ -101,6 +120,9 @@ public class Player extends Entity {
         return !(y > 623) && !(y < 303) && !(x > 1195) && !(x < 65) && (!(y < 528) || !(y > 433) || !(x > 65) || !(x > 255.0) || !(x < 870));
     }
 
+    /*
+    * Defines what to do when a specific key is pressed, used for movement
+    * */
     private void doUserInput() {
         velX = 0;
         velY = 0;
@@ -144,10 +166,18 @@ public class Player extends Entity {
         //body.setLinearVelocity(velX * speed, velY * speed);
     }
 
+    /*
+    * Change with sprite is the currently active one (which one the user is controlling)
+    *
+    * @param state this will allow us to set a character to a false state (not currently being used) or true state (allowed to be used)
+    * */
     public void setActivePlayer(boolean state) {
         active = state;
     }
 
+    /*
+    * Show us which player is the currently active one
+     */
     public boolean getActivePlayer() {
         return active;
     }

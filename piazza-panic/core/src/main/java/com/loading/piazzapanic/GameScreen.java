@@ -32,6 +32,13 @@ public class GameScreen implements Screen {
     private HeartDisplay heartDisplay;
     private Box2DDebugRenderer box2dDebugRenderer;
 
+    private Npc npc;
+
+    private Receipt receipt;
+    Texture NpcTexture;
+
+    Texture receiptTexture;
+
     Texture background;
     Sprite backgroundSprite;
 
@@ -40,6 +47,8 @@ public class GameScreen implements Screen {
 
     ArrayList<Player> players;
     int activePlayer;
+
+
 
     World world;
     ListenerHelper listener;
@@ -50,6 +59,7 @@ public class GameScreen implements Screen {
     long timeStarted = 0;
     long elapsedTime;
 
+    Boolean endNpcTime = false;
 
     public GameScreen(final Launcher parent) {
         this._parent = parent;
@@ -63,13 +73,18 @@ public class GameScreen implements Screen {
         this.background = new Texture("assets/main.png");
         this.backgroundSprite = new Sprite(this.background);
 
+
         //this.chef1 = new Texture("assets/chef1.png");
         //this.chef1Sprite = new Sprite(this.chef1);
 
         this.heartTexture = new Texture("assets/heart.png");
         this.heartDisplay = new HeartDisplay(_parent, this.maxHearts, this.heartTexture);
         // Image loading
+        this.NpcTexture = new Texture("assets/Customer.png");
+        this.npc = new Npc(_parent, NpcTexture);
 
+        this.receiptTexture = new Texture("assets/Receipt.png");
+        this.receipt = new Receipt(_parent, receiptTexture);
         // Sound and music loading
 
         // camera
@@ -96,6 +111,8 @@ public class GameScreen implements Screen {
             players.get(0).setActivePlayer(true);
         }
     }
+
+
 
     public void setActivePlayer(int index) {
         activePlayer = index;
@@ -167,6 +184,19 @@ public class GameScreen implements Screen {
 
         heartDisplay.render();
 
+        npc.render();
+        if (!endNpcTime && npc.getX() >= 1000) {
+            npc.move(npc.getX()-1,225);
+        } else if (endNpcTime) {
+            if (npc.getX() > -50) {
+                npc.move(npc.getX()-1, 225);
+            }
+        } else {
+            receipt.render();
+        }
+
+
+
         world.step(delta, 0, 2);
     }
 
@@ -185,6 +215,9 @@ public class GameScreen implements Screen {
                 }
                 if (keycode == Input.Keys.SPACE) {
                     // some interact method here
+                }
+                if (keycode == Input.Keys.C) {
+                    endNpcTime = true;
                 }
 
                 if (keycode == Input.Keys.L) {

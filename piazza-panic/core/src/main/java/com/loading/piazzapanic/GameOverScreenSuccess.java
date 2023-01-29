@@ -21,7 +21,7 @@ public class GameOverScreenSuccess implements Screen {
     Label infoLabel;
     TextButton menuButton;
 
-
+    
     public GameOverScreenSuccess(Launcher parent, long timeTaken) {
 
         this._parent = parent;

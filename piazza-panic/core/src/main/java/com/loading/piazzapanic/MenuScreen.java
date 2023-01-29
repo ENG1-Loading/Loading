@@ -17,6 +17,10 @@ public class MenuScreen implements Screen{
     Texture background;
     Sprite backgroundSprite;
 
+    /*
+    * Create a menu screen with the initialiser screen
+    *
+    * @param parent sets the parent instance of this class */
     public MenuScreen(final Launcher parent) {
         this._parent = parent;
 
@@ -27,6 +31,8 @@ public class MenuScreen implements Screen{
         camera.setToOrtho(false, 1280, 800);
     }
 
+    /*
+    * Defines what to do when the screen is called*/
     @Override
     public void show() {
         Gdx.input.setInputProcessor(new InputAdapter() {
@@ -39,6 +45,7 @@ public class MenuScreen implements Screen{
             }
         });
     }
+
 
     @Override
     public void render(float delta) {

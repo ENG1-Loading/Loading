@@ -15,6 +15,9 @@ public class Launcher extends Game {
 	public SpriteBatch batch;
 	public BitmapFont font;
 
+	/*
+	* When the launcher is run set the screen to menu screen
+	*/
 	@Override
 	public void create() {
 		// create stuff
