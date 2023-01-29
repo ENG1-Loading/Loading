@@ -7,8 +7,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -61,6 +63,14 @@ public class GameScreen implements Screen {
 
     Boolean endNpcTime = false;
 
+    String message = "";
+    float messageX;
+    float messageY;
+
+    Boolean npcAtRegister = false;
+
+    Boolean collectedReciept = false;
+
     public GameScreen(final Launcher parent) {
         this._parent = parent;
 
@@ -72,7 +82,6 @@ public class GameScreen implements Screen {
 
         this.background = new Texture("assets/main.png");
         this.backgroundSprite = new Sprite(this.background);
-
 
         //this.chef1 = new Texture("assets/chef1.png");
         //this.chef1Sprite = new Sprite(this.chef1);
@@ -98,6 +107,9 @@ public class GameScreen implements Screen {
 
         this._tileMapper = new TileMapParser(this);
         this._mapRenderer = _tileMapper.setupMap();
+
+        _parent.font.setColor(Color.RED);
+
 
     }
 
@@ -152,12 +164,34 @@ public class GameScreen implements Screen {
         this.heartDisplay.reduceHearts(1);
     }
 
-
+    public void checkPosition() {
+        Player current = players.get(activePlayer);
+        float playerPosx = current.getBody().getPosition().x;
+        float playerPosY = current.getBody().getPosition().y;
+        /*
+        * X: 960.0
+        Y: 303.0
+        *
+        * X: 1045.0
+        Y: 303.0
+        */
+        if ((playerPosx < 1045 && playerPosx > 960) && (playerPosY >300 && playerPosY < 330) && (!collectedReciept)) {
+            setMessage("Press F to get \ncustomer reciept");
+            messageX = 1050;
+            messageY = 320;
+        } else {
+            setMessage("");
+        }
+    }
+    public Vector2 getPos() {
+        return players.get(activePlayer).getBody().getPosition();
+    }
     public void create() {
         timeStarted = System.currentTimeMillis();
     }
     @Override
     public void render(float delta) {
+        checkPosition();
         if (timeStarted == 0) {
             timeStarted = System.currentTimeMillis();
         }
@@ -173,11 +207,13 @@ public class GameScreen implements Screen {
 
         _parent.batch.begin();
 
+
         backgroundSprite.draw(this._parent.batch);
         for (Player chef : players) {
             chef.render(this._parent.batch);
         }
 
+        _parent.font.draw(_parent.batch, message, messageX, messageY);
         _parent.batch.end();
 
         box2dDebugRenderer.render(world, camera.combined.scl(32f));
@@ -192,7 +228,13 @@ public class GameScreen implements Screen {
                 npc.move(npc.getX()-1, 225);
             }
         } else {
-            receipt.render();
+            npcAtRegister = true;
+            if (collectedReciept) {
+                receipt.render();
+                npcAtRegister = false;
+                setMessage("");
+            }
+
         }
 
 
@@ -219,6 +261,14 @@ public class GameScreen implements Screen {
                 if (keycode == Input.Keys.C) {
                     endNpcTime = true;
                 }
+                if (keycode == Input.Keys.F && npcAtRegister) {
+                    Vector2 pos = getPos();
+                    float playerPosx = pos.x;
+                    float playerPosY = pos.y;
+                    if ((playerPosx < 1045 && playerPosx > 960) && (playerPosY >300 && playerPosY < 330)) {
+                        collectedReciept = true;
+                    }
+                }
 
                 if (keycode == Input.Keys.L) {
                     int currentHearts = heartDisplay.getNumHearts();
@@ -241,6 +291,10 @@ public class GameScreen implements Screen {
                 return true;
             }
         });
+    }
+
+    public void setMessage(String _message) {
+        this.message = _message;
     }
 
     @Override
