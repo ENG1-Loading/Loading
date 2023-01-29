@@ -54,7 +54,7 @@ export default function Homepage() {
                     <div className="boxContent">
                             <h3>Risk Management</h3>
                             <p>Please click the button to be redirected to our page which has the risk management table</p>
-                        <Link to={"/risk_management"}>
+                        <Link to={"/risk_assessment"}>
                         <button >Go to page</button>
                         </Link>
                         </div>
