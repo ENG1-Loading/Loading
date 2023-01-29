@@ -49,7 +49,7 @@ export const risks = [
         Type: "Project",
         Description: "Workload",
         Likelihood: "M",
-        Severity: "M-H",
+        Severity: "M",
         Mitigation: "Manage time effectively, communicate with the team if a member is struggling with workload.",
         Owner: "Everyone"
     },
