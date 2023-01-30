@@ -22,7 +22,11 @@ public class GameOverScreenFail implements Screen {
     TextButton menuButton;
 
 
-
+    /*
+     * Initialises a class of our game over success screen with the parent instance and time taken to complete the level
+     *
+     * @param parent the instance of parent class that our class should use
+     * @param timeTaken the amount of time (ms) that it took for the player to complete the level*/
     public GameOverScreenFail(Launcher parent, long timeTaken) {
 
         this._parent = parent;

@@ -21,7 +21,11 @@ public class GameOverScreenSuccess implements Screen {
     Label infoLabel;
     TextButton menuButton;
 
-    
+    /*
+    * Initialises a class of our game over success screen with the parent instance and time taken to complete the level
+    *
+    * @param parent the instance of parent class that our class should use
+    * @param timeTaken the amount of time (ms) that it took for the player to complete the level*/
     public GameOverScreenSuccess(Launcher parent, long timeTaken) {
 
         this._parent = parent;
@@ -54,12 +58,15 @@ public class GameOverScreenSuccess implements Screen {
         this.stage.addActor(table);
 
     }
+    /*
+    * When the screen is showed we need to set our input processor to the stage in order to register clicks*/
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage); // bind the input processor to our stage
 
     }
-
+    /*
+    * Render the objects drawn onto the screen*/
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -81,13 +88,16 @@ public class GameOverScreenSuccess implements Screen {
     public void resume() {
 
     }
-
+    /*
+    * When screen is closed then clear our input processer*/
     @Override
     public void hide() {
         Gdx.input.setInputProcessor(null);
 
     }
-
+    /*
+    * Dispose and clear our currently rendered things
+    * */
     @Override
     public void dispose() {
         _parent.batch.dispose();
