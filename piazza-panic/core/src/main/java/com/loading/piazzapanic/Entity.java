@@ -5,7 +5,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 public abstract class Entity {
     
-    protected float x, y, velX, velY, speed;
+    protected float x, y, speed;
     protected float width, height;
     protected Body body;
 
@@ -15,8 +15,6 @@ public abstract class Entity {
         this.y = posy;
         this.width = width;
         this.height = height;
-        this.velX = 0;
-        this.velY = 0;
         this.speed = 0;
     }
 

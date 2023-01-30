@@ -124,8 +124,6 @@ public class Player extends Entity {
     * Defines what to do when a specific key is pressed, used for movement
     * */
     private void doUserInput() {
-        velX = 0;
-        velY = 0;
         //if (Gdx.input.isKeyPressed(Input.Keys.A)) {
         //    x -= speed;
         //}
