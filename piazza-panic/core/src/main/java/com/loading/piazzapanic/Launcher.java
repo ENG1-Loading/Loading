@@ -29,6 +29,7 @@ public class Launcher extends Game {
 
 	}
 
+
 	@Override
 	public void render() {
 		super.render();

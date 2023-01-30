@@ -19,6 +19,7 @@ public class Receipt {
     private float originalScale;
     private boolean hovered = false;
 
+    ArrayList<String> expectedToppings;
     String recieptContent;
 
     private ArrayList<String> burgerTypes = new ArrayList<String>() {{
@@ -39,6 +40,7 @@ public class Receipt {
         this.RecieptTexture = recieptTexture;
         this.RecieptSprite = new Sprite(RecieptTexture);
         this.originalScale = RecieptSprite.getScaleX();
+
         ArrayList<String> ingredientChoices = new ArrayList<String>() {{
             add("Tomato");
             add("Onion");
@@ -47,8 +49,9 @@ public class Receipt {
             add("Ketchup");
             add("Mayo");
         }};
-        int burgerIndex = (int) (Math.random() * ingredientChoices.size());
-        String burgerType = this.burgerTypes.get(0);
+        int burgerIndex = (int) (Math.random() * burgerTypes.size());
+        String burgerType = this.burgerTypes.get(burgerIndex);
+        //expectedToppings.add(burgerType);
         this.recieptContent = "Reciept\nBurger type\n" + burgerType + "\nToppings\n";
         StringBuilder builder = new StringBuilder(this.recieptContent);
         for (int i = 0; i<3; i++) {
@@ -58,6 +61,7 @@ public class Receipt {
 
             //this.recieptContent += ingredientChoices.get(index) + "\n";
             builder.append(ingredientChoices.get(index)).append("\n");
+            //expectedToppings.add(ingredientChoices.get(index));
             ingredientChoices.remove(index);
         }
         recieptContent = builder.toString();
@@ -88,12 +92,16 @@ public class Receipt {
         font.setColor(Color.BLACK);
 
         if (hovered) {
-            font.draw(batch, recieptContent, RecieptSprite.getX()-10, RecieptSprite.getY() + RecieptSprite.getHeight() + 25);
+            font.draw(batch, recieptContent, RecieptSprite.getX()-15, RecieptSprite.getY() + RecieptSprite.getHeight() + 25);
 
         } else {
             font.draw(batch, recieptContent, RecieptSprite.getX(), RecieptSprite.getY() + RecieptSprite.getHeight());
 
         }
         batch.end();
+    }
+
+    public ArrayList<String> getExpectedToppings() {
+        return expectedToppings;
     }
 }

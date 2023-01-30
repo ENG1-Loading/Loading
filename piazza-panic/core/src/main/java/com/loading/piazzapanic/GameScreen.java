@@ -37,6 +37,8 @@ public class GameScreen implements Screen {
     private Npc npc;
 
     private Receipt receipt;
+
+    private Plate plate;
     Texture NpcTexture;
 
     Texture receiptTexture;
@@ -71,6 +73,10 @@ public class GameScreen implements Screen {
 
     Boolean collectedReciept = false;
 
+    Boolean collectedPlate = false;
+
+    int plateCollectedBy;
+
     public GameScreen(final Launcher parent) {
         this._parent = parent;
 
@@ -94,6 +100,7 @@ public class GameScreen implements Screen {
 
         this.receiptTexture = new Texture("assets/Receipt.png");
         this.receipt = new Receipt(_parent, receiptTexture);
+
         // Sound and music loading
 
         // camera
@@ -107,6 +114,8 @@ public class GameScreen implements Screen {
 
         this._tileMapper = new TileMapParser(this);
         this._mapRenderer = _tileMapper.setupMap();
+
+        this.plate = new Plate(_parent);
 
         _parent.font.setColor(Color.RED);
 
@@ -179,8 +188,32 @@ public class GameScreen implements Screen {
             setMessage("Press F to get \ncustomer reciept");
             messageX = 1050;
             messageY = 320;
-        } else {
+        } else if((playerPosx > 0 && playerPosx < 80) && (playerPosY > 600 && playerPosY <640) && (!collectedPlate)) {
+            if (!collectedReciept) {
+                setMessage("Please collect\nreceipt first.");
+            } else {
+                _parent.font.setColor(Color.RED);
+                _parent.font.getData().setScale(1f);
+                setMessage("Press F to\npickup plate");
+            }
+
+            messageX = 20;
+            messageY = 720;
+        }
+        else {
             setMessage("");
+        }
+        if((players.get(0).getBody().getPosition().x > players.get(1).getBody().getPosition().x - 70)
+                && players.get(0).getBody().getPosition().x < players.get(1).getBody().getPosition().x + 70 &&
+                players.get(0).getBody().getPosition().y > players.get(1).getBody().getPosition().y - 70 &&
+                players.get(0).getBody().getPosition().y < players.get(1).getBody().getPosition().y + 70 && collectedPlate) {
+            _parent.font.setColor(Color.RED);
+            _parent.font.getData().setScale(1f);
+            setMessage("Press F to give the other\nplayer the plate");
+            messageX = players.get(0).getBody().getPosition().x;
+            messageY = playerPosY + 100;
+        } else {
+
         }
     }
     public Vector2 getPos() {
@@ -219,6 +252,10 @@ public class GameScreen implements Screen {
         box2dDebugRenderer.render(world, camera.combined.scl(32f));
 
         heartDisplay.render();
+        if (collectedPlate) {
+            plate.changePosition(players.get(plateCollectedBy).getBody().getPosition().x + 20,players.get(plateCollectedBy).getBody().getPosition().y);
+        }
+        plate.render();
 
         npc.render();
         if (!endNpcTime && npc.getX() >= 1000) {
@@ -261,12 +298,30 @@ public class GameScreen implements Screen {
                 if (keycode == Input.Keys.C) {
                     endNpcTime = true;
                 }
-                if (keycode == Input.Keys.F && npcAtRegister) {
+                if (keycode == Input.Keys.F) {
                     Vector2 pos = getPos();
                     float playerPosx = pos.x;
                     float playerPosY = pos.y;
                     if ((playerPosx < 1045 && playerPosx > 960) && (playerPosY >300 && playerPosY < 330)) {
                         collectedReciept = true;
+                    } else if ((playerPosx > 0 && playerPosx < 80) && (playerPosY > 600 && playerPosY <640) && (collectedReciept)) {
+                        System.out.println("Plate collected");
+                        collectedPlate = true;
+                        plateCollectedBy = activePlayer;
+                    }
+
+                    else {
+
+                    }
+                    if((players.get(0).getBody().getPosition().x > players.get(1).getBody().getPosition().x - 70)
+                            && players.get(0).getBody().getPosition().x < players.get(1).getBody().getPosition().x + 70 &&
+                            players.get(0).getBody().getPosition().y > players.get(1).getBody().getPosition().y - 70 &&
+                            players.get(0).getBody().getPosition().y < players.get(1).getBody().getPosition().y + 70 && collectedPlate) {
+                        if (plateCollectedBy == 0) {
+                            plateCollectedBy = 1;
+                        } else {
+                            plateCollectedBy = 0;
+                        }
                     }
                 }
 
@@ -287,6 +342,8 @@ public class GameScreen implements Screen {
                     Gdx.app.exit();
                     System.exit(-1);
                 }
+
+
 
                 return true;
             }
