@@ -5,10 +5,11 @@ import React from 'react';
 import Logo from "../Logo";
 import {Notes} from '../content/Notes';
 import Header from "../SharedComponents/Header";
+import UMLText from '../UML/finalGantt.txt'
 const WeeklyNotes = () => {
     return (
         <div className={'weekly-container'}>
-            <Header title={'Weekly Notes'} buttonName={'Download PDF'} file={'weekly.pdf'} />
+            <Header title={'Weekly Notes'} buttonName={'Download UML code'} file={UMLText} />
             <VerticalTimeline
                 layout={'1-column-right'}
 

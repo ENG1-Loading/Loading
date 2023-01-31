@@ -1,0 +1,31 @@
+@startuml
+[*] --> Idle
+Idle :
+
+Idle -> Selected
+Selected -> Idle
+
+state Selected {
+
+[*] --> Stationary
+[*] --> Interacting
+
+Stationary :
+
+
+
+
+Moving -> Stationary
+Stationary -> Moving
+
+Stationary -> Interacting
+Interacting -> Stationary
+
+
+
+Interacting : Chopping
+Interacting : Flipping
+Interacting : Grabbing
+Interacting : Placing
+}
+@enduml

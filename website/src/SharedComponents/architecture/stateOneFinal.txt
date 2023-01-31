@@ -1,0 +1,17 @@
+@startuml
+[*] --> Ordering
+
+Ordering : Walks to till
+Ordering : Makes order
+Waiting : Walks to counter
+Waiting : Waits at counter indefinitely
+Leaving : Walks out of building
+
+Served : Correct order served
+Ordering --> Waiting
+Waiting --> Served 
+Served --> Leaving
+
+
+
+@enduml

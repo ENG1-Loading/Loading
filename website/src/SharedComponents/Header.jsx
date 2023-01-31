@@ -35,10 +35,10 @@ const Header = ({title,buttonName,file,link}) => {
                 {title}
             </div>
             <div>
-            {/*    download button*/}
-
+            {/*/!*    download button file is a file blob* !/  */}
                 {buttonName&&<button className={'navbar-button'} onClick={onButtonClick}>
-                    {buttonName}</button>}
+                    {file?<a href={file} download={'uml.txt'} >{buttonName} </a>:buttonName}
+                </button>}
             </div>
         </div>
     );
