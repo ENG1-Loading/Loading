@@ -433,10 +433,6 @@ Current y: 303.0*/
 
         }
 
-
-
-
-
         world.step(delta, 0, 2);
     }
 
