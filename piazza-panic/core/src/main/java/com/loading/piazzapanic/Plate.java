@@ -16,8 +16,8 @@ public class Plate {
         this.batch = _parent.batch;
         plateTexture = new Texture("assets/plate.png");
         this.plateSprite = new Sprite(plateTexture);
-        this.x = 10;
-        this.y = 630;
+        this.x = 830;
+        this.y = 480;
     }
 
     public void render() {

@@ -187,7 +187,7 @@ public class GameScreen implements Screen {
             setMessage("Press F to get \ncustomer reciept");
             messageX = 1050;
             messageY = 320;
-        } else if((playerPosx > 0 && playerPosx < 80) && (playerPosY > 600 && playerPosY <640) && (!collectedPlate)) {
+        } else if((playerPosx > 860 && playerPosx < 890) && (playerPosY > 450 && playerPosY <500) && (!collectedPlate)) {
             if (!collectedReciept) {
                 setMessage("Please collect\nreceipt first.");
             } else {
@@ -196,11 +196,37 @@ public class GameScreen implements Screen {
                 setMessage("Press F to\npickup plate");
             }
 
-            messageX = 20;
+            messageX = 780;
+            messageY = 550;
+        } else if((playerPosx < 80 && playerPosx > 50) && (playerPosY > 610 && playerPosY < 630) && (collectedPlate) && (plateCollectedBy == activePlayer)) {
+            setMessage("Press F to \npickup the \nchicken");
             messageY = 720;
-        }
+            messageX = 5;
+        } else if((playerPosx < 80 && playerPosx > 50) && (playerPosY > 490 && playerPosY < 530) && (collectedPlate) && (plateCollectedBy == activePlayer)) {
+            setMessage("Press F to \npickup the \nbeef");
+            messageY = 600;
+            messageX = 5;
+        } else if ((playerPosx < 80 && playerPosx > 50) && (playerPosY > 360 && playerPosY < 390)&& (collectedPlate) && (plateCollectedBy == activePlayer)) {
+            setMessage("Press F to \npickup the \nbun");
+            messageX = 5;
+            messageY = 470;
+        } else if((playerPosx > 1180 && playerPosx<1210) && (playerPosY > 360 && playerPosY < 390)&& (collectedPlate) && (plateCollectedBy == activePlayer)) {
+            setMessage("Press F to \npickup the \nLettuce");
+            messageX = 1210;
+            messageY = 480;
+        } else if((playerPosx> 1180 && playerPosx <1210) && (playerPosY > 480 && playerPosY < 510)&& (collectedPlate) && (plateCollectedBy == activePlayer)) {{
+            setMessage("Press F to \npickup the \nTomato");
+            messageX = 1210;
+            messageY = 600;
+        }} else if((playerPosx > 1180 && playerPosx < 1210) && (playerPosY > 610 && playerPosY < 630)&& (collectedPlate) && (plateCollectedBy == activePlayer)) {{
+            setMessage("Press F to \npickup the \nPickle");
+            messageY = 730;
+            messageX = 1210;
+        }}
         else {
             setMessage("");
+            System.out.println("Current x: " + playerPosx);
+            System.out.println("Current y: " + playerPosY);
         }
         if((players.get(0).getBody().getPosition().x > players.get(1).getBody().getPosition().x - 70)
                 && players.get(0).getBody().getPosition().x < players.get(1).getBody().getPosition().x + 70 &&
@@ -267,6 +293,8 @@ public class GameScreen implements Screen {
             npcAtRegister = true;
             if (collectedReciept) {
                 receipt.render();
+                _parent.font.getData().setScale(1);
+                _parent.font.setColor(Color.RED);
                 npcAtRegister = false;
                 setMessage("");
             }
@@ -303,7 +331,7 @@ public class GameScreen implements Screen {
                     float playerPosY = pos.y;
                     if ((playerPosx < 1045 && playerPosx > 960) && (playerPosY >300 && playerPosY < 330)) {
                         collectedReciept = true;
-                    } else if ((playerPosx > 0 && playerPosx < 80) && (playerPosY > 600 && playerPosY <640) && (collectedReciept)) {
+                    } else if ((playerPosx > 860 && playerPosx < 890) && (playerPosY > 450 && playerPosY <500) && (collectedReciept)) {
                         System.out.println("Plate collected");
                         collectedPlate = true;
                         plateCollectedBy = activePlayer;
