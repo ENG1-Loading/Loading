@@ -18,7 +18,7 @@ const Deliverables = () => {
                 <div className="description">
                     <div>
                         <div>{download.fileName}</div>
-                        <div style={{ color: '#AFAFAF' }}>1.2mb</div>
+                        <div style={{ color: '#AFAFAF' }}>{download.fileSize}</div>
                     </div>
                     <div>
                         <a href={download.file} download={download.fileName}  >
