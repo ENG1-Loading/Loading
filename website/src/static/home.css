@@ -8,7 +8,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .boxChild {
@@ -30,11 +29,9 @@
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-
 }
 .box p {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
 }
 
 .box:hover {
@@ -54,5 +51,15 @@
     color: white;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
+}
 
+@media only screen and (max-width: 900px) {
+
+    .box {
+        width: 100%;
+    }
+
+    .boxChild{
+        flex-direction: column;
+    }
 }

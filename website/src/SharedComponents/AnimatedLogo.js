@@ -1,7 +1,9 @@
-import React, {  useEffect } from "react"
+import React, {useEffect} from "react"
 import anime from "animejs"
 
 import IconLoader from "./LogoSVG"
+import {Link} from "react-router-dom";
+
 const Logo = () => {
     const animate = () => {
         const loader = anime.timeline({
@@ -40,7 +42,8 @@ const Logo = () => {
     }
 
     useEffect(() => {
-        const timeout = setTimeout(() => {}, 1)
+        const timeout = setTimeout(() => {
+        }, 1)
         animate()
         return () => clearTimeout(timeout)
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,14 +51,12 @@ const Logo = () => {
 
     return (
 
-        <a className="logo-wrapper" href={'/Loading'}>
-            {/*redirect to home if clicked*/}
-            <IconLoader />
+    <Link to={'/'} className={'logo-wrapper'}>
+        <IconLoader/>
+    </Link>
 
-        </a>
-    )
+)
 }
-
 
 
 export default Logo
