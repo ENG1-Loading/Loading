@@ -79,7 +79,7 @@ public class GameScreen implements Screen {
     ListenerHelper listener;
 
     Texture heartTexture;
-    int maxHearts = 6;
+    int maxHearts = 3;
 
     long timeStarted = 0;
     long elapsedTime;
@@ -468,6 +468,7 @@ Current y: 303.0*/
                     } else if ((playerPosx < 1045 && playerPosx > 960) && (playerPosY >300 && playerPosY < 330) && (collectedReciept)) {
                         Boolean success = serve();
                         if (!success) {
+                            reduceHearts();
                             int currentHearts = heartDisplay.getNumHearts();
                             if (currentHearts < 1) {
                                 _parent.setScreen(new GameOverScreenFail(_parent, elapsedTime));
@@ -475,7 +476,6 @@ Current y: 303.0*/
                             }
                             System.out.println(currentHearts);
 
-                            reduceHearts();
                         } else {
                             _parent.setScreen(new GameOverScreenSuccess(_parent, elapsedTime));
                         }
