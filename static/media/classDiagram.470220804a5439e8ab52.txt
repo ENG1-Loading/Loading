@@ -1,0 +1,87 @@
+@startuml
+class Chef as class1
+class Pantry as class2
+class Customer as class3
+class Cooking station as class4
+class Recipes as class5
+class Ingredients as class6
+class Order as class7
+class Ingredient station as class8
+class AI as class9
+class Position as class10
+class Sprite as class11
+class Velocity as class12
+class Input as class13
+class Player as class14
+class Collider as class15
+
+class14  Rating
+
+class15  bool ingredientStations[]
+class15  bool cookingStations[]
+class15  bool chef[]
+class15  bool customer[]
+
+class1 -- class15
+class3 -- class15
+
+class14 -- class1
+
+class9  Place order
+class9  Leave satisfied
+class9  Leave unsatisfied
+
+class1 -- class13
+
+class1 -- class10
+class3 -- class10
+class4 -- class10
+class8 -- class10
+
+class1 -- class11
+class4 -- class11
+class3 -- class11
+class8 -- class11
+class6 -- class11
+
+class1 -- class12
+class3 -- class12
+
+class3 -- class9
+
+class10  float x
+class10  float y
+
+class11  image images[]
+class11  float times[]
+
+class12  float x
+class12  float y
+
+class13  bool keyLeft
+class13  bool keyRight
+class13  bool keyUp
+class13  bool keyDown
+
+class6  Patty
+class6  Buns
+class6  Lettuce
+class6  Tomatoes
+class6  Onions
+
+class5  Salad
+class5  Burger
+
+class1  heldIngredients
+
+class4  Cutting station
+class4  Frying station
+class4  Serving station
+
+class5 -- class6
+class7 -- class5
+class3 -- class7
+class2 -- class8
+class8 -- class6
+class1 -- class4
+@enduml

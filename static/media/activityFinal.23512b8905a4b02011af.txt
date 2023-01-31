@@ -1,0 +1,13 @@
+@startuml
+:Order served;
+if (Order correct?) then (yes)
+  if (Is order on time?) then (yes)
+      :Customer leaves satisfied;
+  else (no)
+      :Customer leaves unsatisfied;
+      :Lose reputation;
+  endif
+else (no)
+  :Discard order;
+endif
+@enduml
