@@ -8,14 +8,17 @@ public class Bin {
     private Texture BinTexture;
     private SpriteBatch batch;
 
-
+    /**
+     * Create our instance of bin*/
     public Bin(Launcher parent, Texture binTexture) {
         this._parent = parent;
         this.BinTexture = binTexture;
         this.batch = _parent.batch;
 
     }
-
+    /**
+     * Render our bin
+     * */
     public void render() {
         batch.begin();
         batch.draw(BinTexture, 185,270, 64, 64);

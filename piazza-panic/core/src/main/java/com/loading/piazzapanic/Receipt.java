@@ -28,7 +28,7 @@ public class Receipt {
     String recieptContent = "";
 
 
-    /*
+    /**
     * Create a receipt sprite with the initialiser values
     *
     * @param parent the parent instance of the receipt
@@ -50,30 +50,11 @@ public class Receipt {
             expectedToppings.add(ingredient);
         }
         recieptContent = builder.toString();
-        //ArrayList<String> ingredientChoices = new ArrayList<String>() {{
-        //    add("Tomato");
-        //    add("Lettuce");
-        //    add("Pickles");
-        //}};
-        //int burgerIndex = (int) (Math.random() * burgerTypes.size());
-        //String burgerType = this.burgerTypes.get(burgerIndex);
-        //expectedToppings.add(burgerType);
-        //this.recieptContent = "Reciept\nBurger type\n" + burgerType + "\nToppings\n";
-        //StringBuilder builder = new StringBuilder(this.recieptContent);
-        //for (int i = 0; i<3; i++) {
-//
-//
-        //    int index = (int) (Math.random() * ingredientChoices.size());
-//
-        //    //this.recieptContent += ingredientChoices.get(index) + "\n";
-        //    builder.append(ingredientChoices.get(index)).append("\n");
-        //    expectedToppings.add(ingredientChoices.get(index));
-        //    ingredientChoices.remove(index);
-        //}
-        //recieptContent = builder.toString();
+
+
 
     }
-    /*
+    /**
      * Render the character with the initialised values
      *
      *
@@ -106,7 +87,8 @@ public class Receipt {
         }
         batch.end();
     }
-
+    /**
+     * Return which toppings are expected for success*/
     public ArrayList<String> getExpectedToppings() {
         return expectedToppings;
     }

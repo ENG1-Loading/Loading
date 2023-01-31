@@ -76,7 +76,6 @@ public class GameScreen implements Screen {
 
 
     World world;
-    ListenerHelper listener;
 
     Texture heartTexture;
     int maxHearts = 3;
@@ -115,7 +114,11 @@ public class GameScreen implements Screen {
     int customerNumber = 0;
 
     int plateCollectedBy;
-
+    /**
+     * Initialise our instance of the game screen
+     *
+     * @param parent the instance of the parent class (Launcher) to use objects from
+     * */
     public GameScreen(final Launcher parent) {
         this._parent = parent;
 
@@ -128,8 +131,8 @@ public class GameScreen implements Screen {
         this.background = new Texture("assets/main.png");
         this.backgroundSprite = new Sprite(this.background);
 
-        //this.chef1 = new Texture("assets/chef1.png");
-        //this.chef1Sprite = new Sprite(this.chef1);
+
+
 
         this.heartTexture = new Texture("assets/heart.png");
         this.heartDisplay = new HeartDisplay(_parent, this.maxHearts, this.heartTexture);
@@ -154,8 +157,6 @@ public class GameScreen implements Screen {
 
         // world and map
         this.world = new World(new Vector2(0, 0), false);
-        this.listener = new ListenerHelper();
-        world.setContactListener(new ContactListener());
 
         this._tileMapper = new TileMapParser(this);
         this._mapRenderer = _tileMapper.setupMap();
@@ -210,10 +211,6 @@ public class GameScreen implements Screen {
     }
 
     private void update() {
-        // Vector3 position = camera.position;
-        // position.x = Math.round(players.get(activePlayer).x * 32f * 10) / 10;
-        // position.y = Math.round(players.get(activePlayer).y * 32f * 10) / 10;
-        // camera.position.set(position);
         camera.update();
 
         _parent.batch.setProjectionMatrix(camera.combined);
@@ -238,11 +235,14 @@ public class GameScreen implements Screen {
         activePlayer = index;
         players.get(activePlayer).setActivePlayer(true);
     }
-
+    /**
+     * Reduce the hearts displayed and how many are remaining
+     * */
     public void reduceHearts() {
         this.heartDisplay.reduceHearts(1);
     }
-
+    /**
+     * Used to display messages to the user with the positional X and Y*/
     public void checkPosition() {
         Player current = players.get(activePlayer);
         float playerPosx = current.getBody().getPosition().x;
@@ -351,13 +351,15 @@ Current y: 303.0*/
 
         }
     }
+    /**
+     * Get the current position of the active player
+     *
+     * @return Vector2 the vector containing the players coordinates*/
     public Vector2 getPos() {
         return players.get(activePlayer).getBody().getPosition();
     }
-    public void create() {
-        timeStarted = System.currentTimeMillis();
-    }
-
+    /**
+     * This clears all ingredients that the player has picked up and resets our tracker*/
     public void resetIngredients() {
         tomatoPickedUp = false;
         bunPickedUp = false;
@@ -373,6 +375,11 @@ Current y: 303.0*/
         mayoCollected = false;
         currentlyCollectedIngredients = new ArrayList<String>();
     }
+    /**
+     * Render the different things loaded into our world
+     *
+     * @param delta the time difference between frame renders
+     * */
     @Override
     public void render(float delta) {
         checkPosition();
@@ -382,7 +389,6 @@ Current y: 303.0*/
 
         elapsedTime = (System.currentTimeMillis()- timeStarted) ;
 
-        //System.out.println("Elapsed time: " + elapsedTime + " milliseconds");
         ScreenUtils.clear(0, 0, 0.2f, 1);
 
         this.update();
@@ -394,7 +400,7 @@ Current y: 303.0*/
 
         backgroundSprite.draw(this._parent.batch);
         for (Player chef : players) {
-            chef.render(this._parent.batch);
+            chef.render(this._parent.batch, Gdx.graphics.getDeltaTime());
         }
         secondFont.getData().setScale(1);
         secondFont.setColor(Color.RED);
@@ -457,7 +463,6 @@ Current y: 303.0*/
                 collectedReciept = false;
             }
         } else if(npc.getX() < -40 && endNpcTime == false) {
-            System.out.println("Re-rendering sprite");
             npc.move(1300, 225);
 
         }else {
@@ -475,7 +480,8 @@ Current y: 303.0*/
 
         world.step(delta, 0, 2);
     }
-
+    /**
+     * This is used to process key down events*/
     @Override
     public void show() {
         // Starts the music when game starts
@@ -513,7 +519,6 @@ Current y: 303.0*/
                                 _parent.setScreen(new GameOverScreenFail(_parent, elapsedTime));
 
                             }
-                            System.out.println(currentHearts);
 
                         } else {
                             if (customerNumber == 4) {
@@ -527,7 +532,6 @@ Current y: 303.0*/
                         }
                     }
                     else if ((playerPosx > 860 && playerPosx < 890) && (playerPosY > 450 && playerPosY <500) && (collectedReciept)) {
-                        System.out.println("Plate collected");
                         collectedPlate = true;
                         plateCollectedBy = activePlayer;
                     }
@@ -567,7 +571,6 @@ Current y: 303.0*/
                     if((playerPosx > 350 && playerPosx < 390) && (playerPosY>420 && playerPosY <450 ) && (tomatoPickedUp) && (!tomatoChopped)) {
                         tomatoChopped = true;
                         tomato.chop();
-                        System.out.println("Tomato chopped.");
                     } else if ((playerPosx > 350 && playerPosx < 390) && (playerPosY>420 && playerPosY <450 ) && (lettucePickedUp) && (!lettuceChopped)) {
                         lettuceChopped = true;
                         lettuce.chop();
@@ -590,7 +593,6 @@ Current y: 303.0*/
                     if (currentHearts < 1) {
                         _parent.setScreen(new GameOverScreenFail(_parent, elapsedTime));
                     }
-                    System.out.println(currentHearts);
                     reduceHearts();
                 }
 
@@ -620,11 +622,14 @@ Current y: 303.0*/
             }
         });
     }
-
+    /**
+     * Change message shown to the user
+     * */
     public void setMessage(String _message) {
         this.message = _message;
     }
-
+    /**
+     * Change second message being shown to the user*/
     public void setMessageTwo(String _messageTwo) {
         messageTwo = _messageTwo;
     }
@@ -658,16 +663,13 @@ Current y: 303.0*/
         _parent.batch.dispose();
         _parent.font.dispose();
     }
-
+    /**
+     * Create sprites and add them to the plate
+     *
+     * @param itemPickedUp the item being picked up by the player*/
     public void pickup(String itemPickedUp) {
-        /*
-        *     private Bun bun;
-              private Burger burger;
-              private Lettuce lettuce;
-              private Pickles pickles;*/
         switch(itemPickedUp) {
             case "Tomato":
-                System.out.println("Tomato picked up");
                 currentlyCollectedIngredients.add("Tomato");
                 tomatoPickedUp = true;
                 Body tomatoBody = BodyContainer.createBody(
@@ -681,7 +683,6 @@ Current y: 303.0*/
                 tomato.setScale(0.45f);
                 break;
             case "Lettuce":
-                System.out.println("Lettuce picked up");
                 currentlyCollectedIngredients.add("Lettuce");
                 lettucePickedUp = true;
                 Body lettuceBody = BodyContainer.createBody(
@@ -696,7 +697,6 @@ Current y: 303.0*/
                 lettuce.setScale(0.45f);
                 break;
             case "Bun":
-                System.out.println("Bun picked up");
                 currentlyCollectedIngredients.add("Bun");
                 bunPickedUp = true;
                 Body bunBody = BodyContainer.createBody(
@@ -710,7 +710,6 @@ Current y: 303.0*/
                 bun.setScale(0.45f);
                 break;
             case "Pickle":
-                System.out.println("Pickle picked up");
                 picklesPickedUp = true;
                 currentlyCollectedIngredients.add("Pickles");
                 Body pickleBody = BodyContainer.createBody(
@@ -724,7 +723,6 @@ Current y: 303.0*/
                 pickles.setScale(0.45f);
                 break;
             case "Chicken":
-                System.out.println("Chicken picked up");
                 chickenPickedUp = true;
                 currentlyCollectedIngredients.add("Chicken");
                 Body burgerBody = BodyContainer.createBody(
@@ -738,7 +736,6 @@ Current y: 303.0*/
                 burger.setScale(0.45f);
                 break;
             case "Beef":
-                System.out.println("Beef picked up");
                 beefPickedUp = true;
                 currentlyCollectedIngredients.add("Beef");
                 Body beefBody = BodyContainer.createBody(
@@ -778,7 +775,9 @@ Current y: 303.0*/
         }
 
     }
-
+    /**
+     * Final function being called, to check if the user has the correct ingredients compared to the order
+     * */
     public Boolean serve() {
         if (!(receipts.get(customerNumber).getExpectedToppings().size() == currentlyCollectedIngredients.size())) {
             if (receipts.get(customerNumber).getExpectedToppings().size() > currentlyCollectedIngredients.size()) {
@@ -786,17 +785,13 @@ Current y: 303.0*/
             } else {
                 setMessageTwo("You have too many toppings...");
             }
-            System.out.println("Not equal lengths");
-            System.out.println(receipts.get(customerNumber).getExpectedToppings());
-            System.out.println(currentlyCollectedIngredients);
+
+
             return false;
         }
         for (String i: receipts.get(customerNumber).getExpectedToppings()) {
             if (!currentlyCollectedIngredients.contains(i)) {
                 setMessageTwo("You got the ingredients wrong");
-                System.out.println("Mismatched ingredients");
-                System.out.println(receipts.get(customerNumber).getExpectedToppings());
-                System.out.println(currentlyCollectedIngredients);
                 return false;
             }
         }
@@ -807,7 +802,6 @@ Current y: 303.0*/
                 case "Tomato":
                     status = tomato.getPrepStatus();
                     if (!Objects.equals(status, "CHOPPED")) {
-                        System.out.println("Tomatos are not chopped");
                         setMessageTwo("Tomatos aren't chopped");
                         return false;
                     }
@@ -816,8 +810,6 @@ Current y: 303.0*/
                     status = lettuce.getPrepStatus();
                     if (!Objects.equals(status, "CHOPPED")) {
                         setMessageTwo("Lettuce aren't chopped");
-                        System.out.println("Lettuce are not chopped");
-                        System.out.println(status);
                         return false;
                     }
                     break;

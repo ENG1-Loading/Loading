@@ -24,7 +24,7 @@ public class GameOverScreenSuccess implements Screen {
 
     Sprite backgroundSprite;
 
-    /*
+    /**
     * Initialises a class of our game over success screen with the parent instance and time taken to complete the level
     *
     * @param parent the instance of parent class that our class should use
@@ -63,14 +63,14 @@ public class GameOverScreenSuccess implements Screen {
         this.stage.addActor(table);
 
     }
-    /*
+    /**
     * When the screen is showed we need to set our input processor to the stage in order to register clicks*/
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage); // bind the input processor to our stage
 
     }
-    /*
+    /**
     * Render the objects drawn onto the screen*/
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);

@@ -28,6 +28,11 @@ public class Npc {
 
 
     }
+    /**
+     * Update the time passed and use this to cycle frames, only used if chef is animated
+     *
+     * @param delta the difference in time between renders
+     * */
     public void update(float delta) {
         elapsedTime += delta;
         if (elapsedTime > frameDuration) {
@@ -36,7 +41,7 @@ public class Npc {
         }
 
     }
-    /*
+    /**
      * Renders the sprites we have supplied
      * */
     public void render(float delta) {
@@ -53,11 +58,12 @@ public class Npc {
         batch.end();
 
     }
-
+    /**
+     * Change whether the NPC is idle or not*/
     public void toggleMoving(Boolean ismoving) {
         moving = ismoving;
     }
-    /*
+    /**
      * Moves a sprites position to a given x and y
      *
      * @param x the x-coordinate to move the sprite to
@@ -68,14 +74,14 @@ public class Npc {
         this.x = x;
         this.y = y;
     }
-    /*
+    /**
     * Getter for the sprites current x-coordinate
     * */
     public float getX() {
         return x;
     }
 
-    /*
+    /**
     * To dispose of the current sprite (free up system resources)
      */
     public void dispose() {

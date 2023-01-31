@@ -8,7 +8,7 @@ public class HeartDisplay {
     private int maxHearts;
     private SpriteBatch batch;
 
-    /*
+    /**
     * Initialise a heart display instance with the initial values
     *
     * @param parent sets the parent of this class to the initialised variable
@@ -23,14 +23,14 @@ public class HeartDisplay {
         this.batch = _parent.batch;
     }
 
-    /*
+    /**
     * Get the current number of hearts
     */
     public int getNumHearts() {
         return numHearts;
     }
 
-    /*
+    /**
     * Render the hearts on the screen
     */
     public void render() {
@@ -40,7 +40,7 @@ public class HeartDisplay {
         }
         batch.end();
     }
-    /*
+    /**
     * Reduce the number of hearts on the screen
     */
     public void reduceHearts(int amount) {
