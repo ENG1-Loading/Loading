@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.loading.piazzapanic.foodstuffs.Recipes;
 
 import java.util.ArrayList;
 
@@ -17,46 +18,11 @@ public class Receipt {
     private Sprite RecieptSprite;
     private float originalScale;
     private boolean hovered = false;
-    final ArrayList<String> CHICKEN_BURGER = new ArrayList<String>() {
-        {
-            add("Chicken");
-            add("Bun");
-            add("Lettuce");
-            add("Tomato");
-            add("Pickles");
-            add("Mayo");
-        }
-    };
-    final ArrayList<String> BEEF_BURGER = new ArrayList<String>() {
-        {
-            add("Beef");
-            add("Bun");
-            add("Lettuce");
-            add("Tomato");
-            add("Pickles");
-            add("Ketchup");
-        }
-    };
-    final ArrayList<String> CHICKEN_SALAD = new ArrayList<String>() {
-        {
-            add("Chicken");
-            add("Lettuce");
-            add("Tomato");
-            add("Mayo");
-        }
-    };
-    final ArrayList<String> PLAIN_SALAD = new ArrayList<String>() {
-        {
-            add("Lettuce");
-            add("Tomato");
-            add("Mayo");
-        }
-    };
     final ArrayList<ArrayList<String>> recipes = new ArrayList<ArrayList<String>>() {{
-        add(CHICKEN_BURGER);
-        add(BEEF_BURGER);
-        add(CHICKEN_SALAD);
-        add(PLAIN_SALAD);
+        add(Recipes.CHICKEN_BURGER);
+        add(Recipes.BEEF_BURGER);
+        add(Recipes.CHICKEN_SALAD);
+        add(Recipes.PLAIN_SALAD);
     }};
     ArrayList<String> expectedToppings = new ArrayList<String>();
     String recieptContent = "";

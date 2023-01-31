@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Recipes {
 
-    final ArrayList<String> CHICKEN_BURGER = new ArrayList<String>() {
+    public final static ArrayList<String> CHICKEN_BURGER = new ArrayList<String>() {
         {
             add("Chicken");
             add("Bun");
@@ -14,7 +14,7 @@ public class Recipes {
             add("Mayo");
         }
     };
-    final ArrayList<String> BEEF_BURGER = new ArrayList<String>() {
+    public final static ArrayList<String> BEEF_BURGER = new ArrayList<String>() {
         { 
             add("Beef"); 
             add("Bun"); 
@@ -24,7 +24,7 @@ public class Recipes {
             add("Ketchup");
         }
     };
-    final ArrayList<String> CHICKEN_SALAD = new ArrayList<String>() { 
+    public final static ArrayList<String> CHICKEN_SALAD = new ArrayList<String>() { 
         {
             add("Chicken");
             add("Lettuce");
@@ -32,7 +32,7 @@ public class Recipes {
             add("Mayo"); 
         }
     };
-    final ArrayList<String> PLAIN_SALAD = new ArrayList<String>() {
+    public final static ArrayList<String> PLAIN_SALAD = new ArrayList<String>() {
         {
             add("Lettuce");
             add("Tomato");

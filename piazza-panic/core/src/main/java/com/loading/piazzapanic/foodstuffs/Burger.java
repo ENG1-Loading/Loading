@@ -22,14 +22,14 @@ public class Burger extends Ingredient {
         switch(cook_status) {
             case RAW:
                 cook_status = Cooking.COOKED;
-                if (name == "chicken") {
+                if (name == "Chicken") {
                     texture = new Texture("assets/foodstuffs/chicken_cooked.png");
                 } else {
                     texture = new Texture("assets/foodstuffs/beef_cooked.png");
                 }
             case COOKED:
                 cook_status = Cooking.BURNT;
-                if (name == "chicken") {
+                if (name == "Chicken") {
                     texture = new Texture("assets/foodstuffs/chicken_burnt.png");
                 } else {
                     texture = new Texture("assets/foodstuffs/beef_burnt.png");
