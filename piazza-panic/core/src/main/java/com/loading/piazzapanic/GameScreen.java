@@ -133,7 +133,7 @@ public class GameScreen implements Screen {
         this.heartTexture = new Texture("assets/heart.png");
         this.heartDisplay = new HeartDisplay(_parent, this.maxHearts, this.heartTexture);
         // Image loading
-        this.NpcTexture = new Texture("assets/Customer.png");
+        this.NpcTexture = new Texture("assets/Npc_Spritesheet.png");
         this.npc = new Npc(_parent, NpcTexture);
 
         this.receiptTexture = new Texture("assets/Receipt.png");
@@ -412,7 +412,7 @@ Current y: 303.0*/
             mayo.render(_parent.batch);
         }
 
-        npc.render();
+        npc.render(Gdx.graphics.getDeltaTime());
         bin.render();
 
         if (!endNpcTime && npc.getX() >= 1000) {
@@ -422,6 +422,7 @@ Current y: 303.0*/
                 npc.move(npc.getX()-1, 225);
             }
         } else {
+            npc.toggleMoving(false);
             npcAtRegister = true;
             if (collectedReciept) {
                 receipt.render();
