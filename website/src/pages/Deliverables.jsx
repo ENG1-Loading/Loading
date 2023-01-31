@@ -17,15 +17,17 @@ const Deliverables = () => {
                 </div>
                 <div className="description">
                     <div>
-                        <div>{download.file}</div>
+                        <div>{download.fileName}</div>
                         <div style={{ color: '#AFAFAF' }}>1.2mb</div>
                     </div>
                     <div>
+                        <a href={download.file} download={download.fileName}  >
                         <FaDownload style={{
                             color: '#5e5e5e',
                             fontSize: '29px',
                             cursor: 'pointer',
                         }}/>
+                        </a>
                     </div>
                 </div>
             </div>)})}

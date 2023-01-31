@@ -134,26 +134,9 @@ export const risks = [
         Mitigation: "Implement a thorough testing and QA process for both the product and project",
         Owner: "Everyone"
     },
+
     {
         ID: "R16",
-        Type: "Product",
-        Description: "Unforeseen bugs in third-party assets",
-        Likelihood: "M",
-        Severity: "M",
-        Mitigation: "Regularly check for updates and test third-party assets before integrating them into the game",
-        Owner: "Everyone"
-    },
-    {
-        ID: "R17",
-        Type: "Product",
-        Description: "Lack of compatibility with different devices",
-        Likelihood: "M",
-        Severity: "M",
-        Mitigation: "Test the game on multiple devices and platforms to ensure compatibility",
-        Owner: "Everyone"
-    },
-    {
-        ID: "R18",
         Type: "Project",
         Description: "Limited team size",
         Likelihood: "H",

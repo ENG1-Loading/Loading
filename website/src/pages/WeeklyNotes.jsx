@@ -10,6 +10,9 @@ const WeeklyNotes = () => {
         <div className={'weekly-container'}>
             <Header title={'Weekly Notes'} buttonName={'Download PDF'} file={'weekly.pdf'} />
             <VerticalTimeline
+                layout={'1-column-right'}
+
+
             >
                 {/*    weekly notes*/}
                 {Notes().map((note, index) => {
@@ -21,7 +24,9 @@ const WeeklyNotes = () => {
                             date={note.date}
                             // iconStyle={{background: 'rgb(255,255,255)', color: '#0e0e0e'}}
                             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                            icon={<Logo height={'60px'} width={'60px'}/>}
+                            icon={<Logo height={'40px'} width={'40px'}/>}
+                            animate={true}
+
                         >
                             <h3 className="vertical-timeline-element-title">{note.title}</h3>
                             <p className={'weekly-note'}>

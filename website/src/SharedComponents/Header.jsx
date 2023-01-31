@@ -21,7 +21,6 @@ const Header = ({title,buttonName,file,link}) => {
                 window.URL.revokeObjectURL(url);
             })
             .catch(error => console.log(error));
-    //
     }
     return (
         <div className={'navbar'}>
