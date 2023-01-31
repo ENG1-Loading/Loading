@@ -30,28 +30,28 @@ const Architecture = () => {
                     <img src={ComponentV2} alt="Component Diagram (V2)" className="img-fluid"/>
                     <h3>Structural Diagrams</h3>
                     <h4> Class Diagram</h4>
-                    <Image alt={"Class Diagram"} image={ClassDiagram} txt={classDiagram} className={'img-fluid class-diagram'}/>
+                    <Image alt={"Class Diagram"} image={ClassDiagram} txt={classDiagram} className={'img-fluid class-diagram'} fileName={'classDiagram.txt'} />
                     <h4> Component Diagram</h4>
                     {/*<img src={ComponentDiagram} alt="Component Diagram" className="img-fluid" />*/}
-                    <Image alt={"Component Diagram"} image={ComponentDiagram} txt={componentDiagram} className={'img-fluid component-diagram'}/>
+                    <Image alt={"Component Diagram"} image={ComponentDiagram} txt={componentDiagram} className={'img-fluid component-diagram'} fileName={'componentDiagram.txt'}/>
                     <h3>Behavioural Diagrams</h3>
                     <h4> Activity Diagram</h4>
                     {/*<img src={ActivityDiagram} alt="Activity Diagram" className="img-fluid"/>*/}
-                    <Image alt={"Activity Diagram"} image={ActivityDiagram} txt={activityDiagram} className={'img-fluid activity-diagram'}/>
+                    <Image alt={"Activity Diagram"} image={ActivityDiagram} txt={activityDiagram} className={'img-fluid activity-diagram'} fileName={'activityDiagram.txt'}/>
                     <h4> Sequence Diagram</h4>
                     {/*<img src={SequenceDiagram} alt="Sequence Diagram" className="img-fluid"/>*/}
-                    <Image alt={"Sequence Diagram"} image={SequenceDiagram} txt={sequenceDiagram} className={'img-fluid sequence-diagram'}/>
+                    <Image alt={"Sequence Diagram"} image={SequenceDiagram} txt={sequenceDiagram} className={'img-fluid sequence-diagram'} fileName={'sequenceDiagram.txt'}/>
                     <div className="image-row">
                         <div className="image-column">
                             <h4> State Diagram (Chef)</h4>
                             {/*<img src={StateDiagramChef} alt="State Diagram (Chef)" className="img-fluid"/>*/}
-                            <Image alt={"State Diagram (Chef)"} image={StateDiagramChef} txt={stateDiagramChef} className={'img-fluid state-diagram'}/>
+                            <Image alt={"State Diagram (Chef)"} image={StateDiagramChef} txt={stateDiagramChef} className={'img-fluid state-diagram'} fileName={'stateDiagram_chef.txt'}/>
 
                         </div>
                         <div className="image-column">
                             <h4> State Diagram (Customer)</h4>
                             {/*<img src={StateDiagramCustomer} alt="State Diagram (Customer)" className="img-fluid"/>*/}
-                            <Image alt={"State Diagram (Customer)"} image={StateDiagramCustomer} txt={stateDiagramCustomer} className={'img-fluid state-diagram'}/>
+                            <Image alt={"State Diagram (Customer)"} image={StateDiagramCustomer} txt={stateDiagramCustomer} className={'img-fluid state-diagram'} fileName={'stateDiagram_customer.txt'}/>
                         </div>
                     </div>
                 </div>
