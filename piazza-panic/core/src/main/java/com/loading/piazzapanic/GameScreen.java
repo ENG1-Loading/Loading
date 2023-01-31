@@ -318,6 +318,14 @@ Current y: 303.0*/
             setMessage("Press F to \nget ketchup");
             messageY = 480;
             messageX = 540;
+        } else if((playerPosx > 448 && playerPosx < 512) && (playerPosY < 416 && playerPosY > 320) && (collectedPlate) && (chickenPickedUp || beefPickedUp)) {
+            setMessage("Press F to \ncook meat");
+            messageX = 448;
+            messageY = 512;
+        } else if((playerPosx > 640 && playerPosx < 704) && (playerPosY < 416 && playerPosY > 320) && (collectedPlate) && (chickenPickedUp || beefPickedUp)) {
+            setMessage("Press F to \ncook meat");
+            messageX = 640;
+            messageY = 512;
         }
         else {
             setMessage("");
@@ -696,7 +704,7 @@ Current y: 303.0*/
                 this.burger = new Burger(10,10,burgerBody, "assets/foodstuffs/chicken.png", "Chicken");
                 burger.setScale(0.45f);
                 break;
-                case "Beef":
+            case "Beef":
                 System.out.println("Beef picked up");
                 beefPickedUp = true;
                 currentlyCollectedIngredients.add("Beef");

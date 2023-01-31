@@ -33,8 +33,6 @@ public class TileMapParser {
     }
 
     public void parseObjects(MapObjects mapObjects) {
-        System.out.println("AKkld:sl:asdk:asldkL;");
-
         for (MapObject obj : mapObjects) {
             // Chef Player Characters
             if (obj instanceof RectangleMapObject) {

@@ -39,5 +39,5 @@ For example, `core:clean` removes `build` folder only from the `core` project.
 - [x] customer system
 - [x] Player control
 - [x] switching chef system
-- [] ingredient collection
+- [x] ingredient collection
 - [] in game timer plus events
