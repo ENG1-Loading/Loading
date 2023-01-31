@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 public class Recipes {
 
+    /**
+     * Contains the recipes that the chefs will cook.
+     * These are constants, and can be easily defined here
+     */
+
     public final static ArrayList<String> CHICKEN_BURGER = new ArrayList<String>() {
         {
             add("Chicken");

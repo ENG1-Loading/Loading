@@ -22,7 +22,7 @@ public class Launcher extends Game {
 		font = new BitmapFont();
 		batch = new SpriteBatch();
 
-		// Shows Team Loading logo, waits (basically standard publisher logo cliche)
+		// spawns a new menu screen and sets it as the current screen
 		setScreen(new MenuScreen(this));
 
 	}

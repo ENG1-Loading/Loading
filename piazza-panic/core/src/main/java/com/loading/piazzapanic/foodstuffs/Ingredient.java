@@ -16,6 +16,7 @@ public abstract class Ingredient extends com.loading.piazzapanic.Entity {
 
     float x, y;
     
+    /* Enums used for the state of the ingredient */
     public enum Cooking {
         RAW,
         COOKED,
@@ -32,6 +33,12 @@ public abstract class Ingredient extends com.loading.piazzapanic.Entity {
     Cooking cook_status;
     Prepping prep_status;
 
+    /** Extends Entity, so requires the same parameters plus a few more
+     * Every ingredient requires these additional parameters.
+     * @param path A string that contains the relative path of the image file for the texture
+     * @param name The ingredient name
+     */
+
     public Ingredient(float width, float height, Body body, String path, String name) {
         super(width, height, body, width, height);
         this.texture = new Texture(path);
@@ -47,6 +54,10 @@ public abstract class Ingredient extends com.loading.piazzapanic.Entity {
         batch.end();
     }
 
+    /**
+     * 
+     * @param scale used to define the scaling of the sprite
+     */
     public void setScale(float scale) {
         sprite.setScale(scale);
     }
@@ -57,6 +68,7 @@ public abstract class Ingredient extends com.loading.piazzapanic.Entity {
         
     }
 
+    /* The method used for chopping logic */
     public abstract void chop();
 
     public void setPosition(float _x, float _y) {

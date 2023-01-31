@@ -8,8 +8,17 @@ import com.badlogic.gdx.physics.box2d.World;
 
 public class BodyContainer {
  
-    private static short PHYSICS_ENTITY = 0x01;
-    private static short WORLD_ENTITY = 0x02;
+    /** Constructor for creating a Box2D body
+     * It can create both static and dynamic bodies
+     * 
+     * @param x current x coordinate
+     * @param y current y coordinate
+     * @param width width of the body
+     * @param height height of the body
+     * @param isStatic static or dynamic body, true if static
+     * @param world the World that will contain the body
+     * @return returns a Box2D body object
+     */
 
     public static Body createBody(float x, float y, float width, float height, boolean isStatic, World world) {
         BodyDef bodyDef = new BodyDef();
@@ -23,8 +32,6 @@ public class BodyContainer {
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
-        fixtureDef.filter.categoryBits = isStatic ? WORLD_ENTITY : PHYSICS_ENTITY;
-        fixtureDef.filter.maskBits = isStatic ? PHYSICS_ENTITY : WORLD_ENTITY;
         body.createFixture(fixtureDef);
         shape.dispose();
         

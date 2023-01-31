@@ -19,11 +19,14 @@ public class TileMapParser {
     private TiledMap _tiledMap;
     private GameScreen _gameScreen;
 
-
+    /** Constructor that creates a parser for .tmx files
+     * @param gameScreen the screen that objects are loaded onto
+     */
     public TileMapParser(GameScreen gameScreen) {
         this._gameScreen = gameScreen;
     }
-
+    
+    // Loads the map file and then parses objects on the "colliders" layer before returning a MapRenderer
     public OrthogonalTiledMapRenderer setupMap() {
         _tiledMap = new TmxMapLoader().load("assets/main.tmx");
         parseObjects(_tiledMap.getLayers().get("colliders").getObjects());
@@ -31,6 +34,11 @@ public class TileMapParser {
         return new OrthogonalTiledMapRenderer(_tiledMap, 1 / 32f);
     }
 
+    /** Parses each type of object within a .tmx layer.
+     * Rectangles are players
+     * Polygons are static objects, and are usually interactable but also barriers
+     * @param mapObjects the collection of objects on the layer
+     */
     public void parseObjects(MapObjects mapObjects) {
         for (MapObject obj : mapObjects) {
             // Chef Player Characters
@@ -81,6 +89,9 @@ public class TileMapParser {
         }
     }
 
+    /** Creates the Box2D body for the polygon object
+     * @param polygonMapObject the polygon object from the .tmx layer
+     */
     public void createStaticObject(PolygonMapObject polygonMapObject) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.StaticBody;
@@ -90,7 +101,9 @@ public class TileMapParser {
         shape.dispose();
     }
 
-    // helper to get the shape of the polygon object for the body
+    /** helper function to calculate the shape of the polygon object for the body
+     * @param polygonMapObject the polygon object from the .tmx layer
+     */
     private Shape createPolygonShape(PolygonMapObject polygonMapObject) {
         float[] vertices = polygonMapObject.getPolygon().getTransformedVertices();
         Vector2[] worldVertices = new Vector2[vertices.length / 2];

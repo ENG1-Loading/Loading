@@ -17,7 +17,7 @@ public class MenuScreen implements Screen{
     Texture background;
     Sprite backgroundSprite;
 
-    /*
+    /**
     * Create a menu screen with the initialiser screen
     *
     * @param parent sets the parent instance of this class */
