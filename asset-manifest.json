@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Loading/static/css/main.e4c15f24.css",
-    "main.js": "/Loading/static/js/main.54bfa644.js",
+    "main.css": "/Loading/static/css/main.c853769c.css",
+    "main.js": "/Loading/static/js/main.a0412340.js",
     "static/js/787.71e672d5.chunk.js": "/Loading/static/js/787.71e672d5.chunk.js",
     "static/media/classDiagram.png": "/Loading/static/media/classDiagram.fa60d0e2c4bb992380bb.png",
     "static/media/week12.png": "/Loading/static/media/week12.4f113bb279dc5fbcc97d.png",
@@ -24,12 +24,12 @@
     "static/media/activityDiagram.png": "/Loading/static/media/activityDiagram.ca3024d2673af6a81b73.png",
     "index.html": "/Loading/index.html",
     "static/media/piazza-panic.jar": "/Loading/static/media/piazza-panic.31d6cfe0d16ae931b73c.jar",
-    "main.e4c15f24.css.map": "/Loading/static/css/main.e4c15f24.css.map",
-    "main.54bfa644.js.map": "/Loading/static/js/main.54bfa644.js.map",
+    "main.c853769c.css.map": "/Loading/static/css/main.c853769c.css.map",
+    "main.a0412340.js.map": "/Loading/static/js/main.a0412340.js.map",
     "787.71e672d5.chunk.js.map": "/Loading/static/js/787.71e672d5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4c15f24.css",
-    "static/js/main.54bfa644.js"
+    "static/css/main.c853769c.css",
+    "static/js/main.a0412340.js"
   ]
 }
