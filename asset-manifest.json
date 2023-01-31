@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Loading/static/css/main.26a190ba.css",
-    "main.js": "/Loading/static/js/main.52fc33da.js",
+    "main.js": "/Loading/static/js/main.8346e46b.js",
     "static/js/787.71e672d5.chunk.js": "/Loading/static/js/787.71e672d5.chunk.js",
     "static/media/Plan1.pdf": "/Loading/static/media/Plan1.db0e6b69d24e61a740bb.pdf",
     "static/media/Arch1.pdf": "/Loading/static/media/Arch1.1eba15a0144768b00272.pdf",
@@ -39,11 +39,11 @@
     "static/media/activityFinal.txt": "/Loading/static/media/activityFinal.23512b8905a4b02011af.txt",
     "static/media/piazza-panic.jar": "/Loading/static/media/piazza-panic.31d6cfe0d16ae931b73c.jar",
     "main.26a190ba.css.map": "/Loading/static/css/main.26a190ba.css.map",
-    "main.52fc33da.js.map": "/Loading/static/js/main.52fc33da.js.map",
+    "main.8346e46b.js.map": "/Loading/static/js/main.8346e46b.js.map",
     "787.71e672d5.chunk.js.map": "/Loading/static/js/787.71e672d5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.26a190ba.css",
-    "static/js/main.52fc33da.js"
+    "static/js/main.8346e46b.js"
   ]
 }
