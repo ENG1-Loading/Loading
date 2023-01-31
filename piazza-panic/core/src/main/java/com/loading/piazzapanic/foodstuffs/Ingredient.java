@@ -47,6 +47,10 @@ public abstract class Ingredient extends com.loading.piazzapanic.Entity {
         batch.end();
     }
 
+    public void setScale(float scale) {
+        sprite.setScale(scale);
+    }
+
     @Override
     public void update() {
         // TODO Auto-generated method stub
@@ -67,7 +71,18 @@ public abstract class Ingredient extends com.loading.piazzapanic.Entity {
     public float getY() {
         return y;
     }
+    public String getPrepStatus() {
+        return prep_status.toString();
+    }
+
+    public Cooking getCookStatus() {
+        return cook_status;
+    }
 
     public abstract void cook();
+
+    public String getName() {
+        return name;
+    }
 
 }

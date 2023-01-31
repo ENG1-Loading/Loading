@@ -17,14 +17,50 @@ public class Receipt {
     private Sprite RecieptSprite;
     private float originalScale;
     private boolean hovered = false;
-
-    ArrayList<String> expectedToppings;
-    String recieptContent;
-
-    private ArrayList<String> burgerTypes = new ArrayList<String>() {{
-        add("Chicken");
-        add("Beef");
+    final ArrayList<String> CHICKEN_BURGER = new ArrayList<String>() {
+        {
+            add("Chicken");
+            add("Bun");
+            add("Lettuce");
+            add("Tomato");
+            add("Pickles");
+            add("Mayo");
+        }
+    };
+    final ArrayList<String> BEEF_BURGER = new ArrayList<String>() {
+        {
+            add("Beef");
+            add("Bun");
+            add("Lettuce");
+            add("Tomato");
+            add("Pickles");
+            add("Ketchup");
+        }
+    };
+    final ArrayList<String> CHICKEN_SALAD = new ArrayList<String>() {
+        {
+            add("Chicken");
+            add("Lettuce");
+            add("Tomato");
+            add("Mayo");
+        }
+    };
+    final ArrayList<String> PLAIN_SALAD = new ArrayList<String>() {
+        {
+            add("Lettuce");
+            add("Tomato");
+            add("Mayo");
+        }
+    };
+    final ArrayList<ArrayList<String>> recipes = new ArrayList<ArrayList<String>>() {{
+        add(CHICKEN_BURGER);
+        add(BEEF_BURGER);
+        add(CHICKEN_SALAD);
+        add(PLAIN_SALAD);
     }};
+    ArrayList<String> expectedToppings = new ArrayList<String>();
+    String recieptContent = "";
+
 
     /*
     * Create a receipt sprite with the initialiser values
@@ -39,31 +75,36 @@ public class Receipt {
         this.RecieptTexture = recieptTexture;
         this.RecieptSprite = new Sprite(RecieptTexture);
         this.originalScale = RecieptSprite.getScaleX();
+        int recipeIndex = (int) (Math.random() * recipes.size());
+        ArrayList<String> chosenRecipe = recipes.get(recipeIndex);
+        StringBuilder builder = new StringBuilder(recieptContent);
 
-        ArrayList<String> ingredientChoices = new ArrayList<String>() {{
-            add("Tomato");
-            add("Onion");
-            add("Lettuce");
-            add("Pickles");
-            add("Ketchup");
-            add("Mayo");
-        }};
-        int burgerIndex = (int) (Math.random() * burgerTypes.size());
-        String burgerType = this.burgerTypes.get(burgerIndex);
-        //expectedToppings.add(burgerType);
-        this.recieptContent = "Reciept\nBurger type\n" + burgerType + "\nToppings\n";
-        StringBuilder builder = new StringBuilder(this.recieptContent);
-        for (int i = 0; i<3; i++) {
-
-
-            int index = (int) (Math.random() * ingredientChoices.size());
-
-            //this.recieptContent += ingredientChoices.get(index) + "\n";
-            builder.append(ingredientChoices.get(index)).append("\n");
-            //expectedToppings.add(ingredientChoices.get(index));
-            ingredientChoices.remove(index);
+        for (String ingredient: chosenRecipe) {
+            builder.append(ingredient).append("\n");
+            expectedToppings.add(ingredient);
         }
         recieptContent = builder.toString();
+        //ArrayList<String> ingredientChoices = new ArrayList<String>() {{
+        //    add("Tomato");
+        //    add("Lettuce");
+        //    add("Pickles");
+        //}};
+        //int burgerIndex = (int) (Math.random() * burgerTypes.size());
+        //String burgerType = this.burgerTypes.get(burgerIndex);
+        //expectedToppings.add(burgerType);
+        //this.recieptContent = "Reciept\nBurger type\n" + burgerType + "\nToppings\n";
+        //StringBuilder builder = new StringBuilder(this.recieptContent);
+        //for (int i = 0; i<3; i++) {
+//
+//
+        //    int index = (int) (Math.random() * ingredientChoices.size());
+//
+        //    //this.recieptContent += ingredientChoices.get(index) + "\n";
+        //    builder.append(ingredientChoices.get(index)).append("\n");
+        //    expectedToppings.add(ingredientChoices.get(index));
+        //    ingredientChoices.remove(index);
+        //}
+        //recieptContent = builder.toString();
 
     }
     /*
