@@ -61,9 +61,9 @@ public class Player extends Entity {
     @Override
     public void update(){}
     /**
-     * Update the time passed and use this to cycle frames, only used if chef is animated
+     * Render the character with the initialised values
      *
-     * @param delta the difference in time between renders
+     * @param batch the batch data to supply the renderer with
      * */
     public void update(float delta) {
         elapsedTime += delta;
@@ -113,7 +113,7 @@ public class Player extends Entity {
     * @return Boolean if the sprite is currently colliding or not
     * */
     private Boolean isColliding(float x,float y) {
-        return !(y > 603) && !(y < 270) && !(x > 1195) && !(x < 65) && (!(y < 528) || !(y > 433) || !(x > 65) || !(x > 255.0) || !(x < 870));
+        return !(y > 623) && !(y < 303) && !(x > 1195) && !(x < 65) && (!(y < 528) || !(y > 433) || !(x > 65) || !(x > 255.0) || !(x < 870));
     }
 
     /*

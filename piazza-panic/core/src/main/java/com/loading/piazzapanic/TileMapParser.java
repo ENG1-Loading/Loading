@@ -22,7 +22,6 @@ public class TileMapParser {
 
     public TileMapParser(GameScreen gameScreen) {
         this._gameScreen = gameScreen;
-        _gameScreen.world.setContactListener(new ContactListener());
     }
 
     public OrthogonalTiledMapRenderer setupMap() {
