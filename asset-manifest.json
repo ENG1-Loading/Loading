@@ -1,8 +1,10 @@
 {
   "files": {
-    "main.css": "/Loading/static/css/main.c853769c.css",
-    "main.js": "/Loading/static/js/main.a0412340.js",
+    "main.css": "/Loading/static/css/main.81c0c2e7.css",
+    "main.js": "/Loading/static/js/main.d0ce23d1.js",
     "static/js/787.71e672d5.chunk.js": "/Loading/static/js/787.71e672d5.chunk.js",
+    "static/media/Plan1.pdf": "/Loading/static/media/Plan1.db0e6b69d24e61a740bb.pdf",
+    "static/media/Arch1.pdf": "/Loading/static/media/Arch1.1eba15a0144768b00272.pdf",
     "static/media/classDiagram.png": "/Loading/static/media/classDiagram.fa60d0e2c4bb992380bb.png",
     "static/media/week12.png": "/Loading/static/media/week12.4f113bb279dc5fbcc97d.png",
     "static/media/week11.png": "/Loading/static/media/week11.7a43a0b15da4828f59aa.png",
@@ -17,6 +19,10 @@
     "static/media/week3.png": "/Loading/static/media/week3.586deb3461a96cbf4c38.png",
     "static/media/week2.png": "/Loading/static/media/week2.67b4b5adfb0076a40d76.png",
     "static/media/Logo.png": "/Loading/static/media/Logo.3ccab85d9d794ebfcc7b.png",
+    "static/media/Risk1.pdf": "/Loading/static/media/Risk1.69f382929f67cec8aedc.pdf",
+    "static/media/Component-V2.png": "/Loading/static/media/Component-V2.c356f6c4864ec2fb824f.png",
+    "static/media/Req1.pdf": "/Loading/static/media/Req1.bd788436048ed93006da.pdf",
+    "static/media/Component-V1.png": "/Loading/static/media/Component-V1.10ce59c747605dee521c.png",
     "static/media/sequenceDiagram.png": "/Loading/static/media/sequenceDiagram.0aa695b9fba1e6f48555.png",
     "static/media/componentDiagram.png": "/Loading/static/media/componentDiagram.2f2ac47bb0fae92dd255.png",
     "static/media/stateDiagram_chef.png": "/Loading/static/media/stateDiagram_chef.44c53464b40175e3f326.png",
@@ -24,12 +30,12 @@
     "static/media/activityDiagram.png": "/Loading/static/media/activityDiagram.ca3024d2673af6a81b73.png",
     "index.html": "/Loading/index.html",
     "static/media/piazza-panic.jar": "/Loading/static/media/piazza-panic.31d6cfe0d16ae931b73c.jar",
-    "main.c853769c.css.map": "/Loading/static/css/main.c853769c.css.map",
-    "main.a0412340.js.map": "/Loading/static/js/main.a0412340.js.map",
+    "main.81c0c2e7.css.map": "/Loading/static/css/main.81c0c2e7.css.map",
+    "main.d0ce23d1.js.map": "/Loading/static/js/main.d0ce23d1.js.map",
     "787.71e672d5.chunk.js.map": "/Loading/static/js/787.71e672d5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c853769c.css",
-    "static/js/main.a0412340.js"
+    "static/css/main.81c0c2e7.css",
+    "static/js/main.d0ce23d1.js"
   ]
 }
