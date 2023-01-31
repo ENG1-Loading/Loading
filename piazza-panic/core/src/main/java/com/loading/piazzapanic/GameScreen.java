@@ -439,11 +439,11 @@ Current y: 303.0*/
         bin.render();
 
         if (!endNpcTime && npc.getX() >= 1000) {
-            npc.move(npc.getX()-2,225);
+            npc.move(npc.getX()-1,225);
         } else if (endNpcTime) {
             npc.toggleMoving(true);
             if (npc.getX() > -50) {
-                npc.move(npc.getX()-2, 225);
+                npc.move(npc.getX()-1, 225);
             } else {
                 endNpcTime = false;
                 collectedReciept = false;
@@ -513,6 +513,7 @@ Current y: 303.0*/
                             } else {
                                 customerNumber++;
                                 endNpcTime = true;
+                                resetIngredients();
                             }
 
                         }
