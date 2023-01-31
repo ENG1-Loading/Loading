@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,6 +22,8 @@ public class GameOverScreenSuccess implements Screen {
     Label infoLabel;
     TextButton menuButton;
 
+    Sprite backgroundSprite;
+
     /*
     * Initialises a class of our game over success screen with the parent instance and time taken to complete the level
     *
@@ -31,9 +34,11 @@ public class GameOverScreenSuccess implements Screen {
         this._parent = parent;
         int screenWidth = Gdx.graphics.getWidth();
         int screenHeight = Gdx.graphics.getHeight();
+        Texture background = new Texture("assets/GameoverS.png");
+        backgroundSprite = new Sprite(background);
         Table table = new Table();
         this.stage = new Stage();
-        gameOverLabel = new Label("Game Over, it took you: "+timeTaken+" to complete the level", new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+        gameOverLabel = new Label("Game Over, it took you: "+(int) (timeTaken/1000)+" to complete the level", new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         infoLabel = new Label("To go back to menu press space :)", new Label.LabelStyle(new BitmapFont(), Color.GOLD));
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
         style.up = new TextureRegionDrawable(new TextureRegion(new Texture("button.png")));
@@ -70,6 +75,9 @@ public class GameOverScreenSuccess implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        _parent.batch.begin();
+        backgroundSprite.draw(_parent.batch);
+        _parent.batch.end();
         stage.act();
         stage.draw();
     }

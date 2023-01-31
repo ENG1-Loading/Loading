@@ -489,9 +489,9 @@ Current y: 303.0*/
                 if (keycode == Input.Keys.Q) {
                     cyclePlayer(-1);
                 }
-                if (keycode == Input.Keys.SPACE) {
-                    // some interact method here
-                }
+
+
+
                 if (keycode == Input.Keys.C) {
                     endNpcTime = true;
                 }
