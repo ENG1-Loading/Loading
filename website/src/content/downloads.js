@@ -2,13 +2,14 @@ import Req1 from "../documents/Req1.pdf";
 import Arch1 from "../documents/Arch1.pdf";
 import Plan1 from "../documents/Plan1.pdf";
 import Risk1 from "../documents/Risk1.pdf";
+import Impl1 from "../documents/Impl1.pdf";
 export const downloads = [
     {
       id:1,
         title: "Requirements",
         description: "Requirements",
         fileName: "Req1.pdf",
-        fileSize: "0.5MB",
+        fileSize: "129KB",
         file: Req1
 
     },
@@ -17,7 +18,7 @@ export const downloads = [
         title: "Architecture",
         description: "Architecture",
         fileName: "Arch1.pdf",
-        fileSize: "0.5MB",
+        fileSize: "351KB",
         file: Arch1
     },
     {
@@ -25,7 +26,7 @@ export const downloads = [
         title: "Method selection and planning",
         description: "Method selection and planning",
         fileName: "Plan1.pdf",
-        fileSize: "0.5MB",
+        fileSize: "576KB",
         file: Plan1
 
     },
@@ -34,7 +35,7 @@ export const downloads = [
         title: "Risk assessment and mitigation",
         description: "Risk assessment and mitigation",
         fileName: "Risk1.pdf",
-        fileSize: "0.5MB",
+        fileSize: "162KB",
         file: Risk1
     },
     {
@@ -42,7 +43,7 @@ export const downloads = [
         title: "Implementation",
         description: "Implementation",
         fileName: "Impl1.pdf",
-        fileSize: "0.5MB",
-        file:null
+        fileSize: "126KB",
+        file:Impl1
     },
  ]

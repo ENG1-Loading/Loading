@@ -130,7 +130,7 @@ const columns = [
 function Table() {
     return (
         <>
-            <Header buttonName={'Download PDF'} file={'PDF'} title={'Risk Register'}/>
+            <Header title={'Risk Register'}/>
             <div style={{maxWidth: "70%", margin: 'auto', marginTop: "60px"}}>
                 <DataTable
                     columns={columns}

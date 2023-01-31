@@ -8,14 +8,14 @@ const Header = ({title,buttonName,file,link}) => {
             window.open(link)
             return
         }
-        fetch(`../documents/${file}`)
+        fetch(file)
             .then(response => response.blob())
             .then(blob => {
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.style.display = 'none';
                 a.href = url;
-                a.download = file
+                a.download = 'ganttChart.txt'
                 document.body.appendChild(a);
                 a.click();
                 window.URL.revokeObjectURL(url);
@@ -37,7 +37,7 @@ const Header = ({title,buttonName,file,link}) => {
             <div>
             {/*/!*    download button file is a file blob* !/  */}
                 {buttonName&&<button className={'navbar-button'} onClick={onButtonClick}>
-                    {file?<a href={file} download={'uml.txt'} >{buttonName} </a>:buttonName}
+                    {buttonName}
                 </button>}
             </div>
         </div>

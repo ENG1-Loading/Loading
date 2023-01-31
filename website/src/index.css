@@ -45,3 +45,10 @@ code {
     text-decoration: none;
     color: white;
 }
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #242424;
+}

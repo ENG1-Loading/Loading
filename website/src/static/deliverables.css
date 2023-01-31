@@ -8,6 +8,7 @@
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    color: #151515;
 }
 
 .deliverables-card {

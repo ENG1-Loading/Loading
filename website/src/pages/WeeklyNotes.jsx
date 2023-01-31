@@ -12,8 +12,6 @@ const WeeklyNotes = () => {
             <Header title={'Weekly Notes'} buttonName={'Download UML code'} file={UMLText} />
             <VerticalTimeline
                 layout={'1-column-right'}
-
-
             >
                 {/*    weekly notes*/}
                 {Notes().map((note, index) => {
@@ -27,18 +25,15 @@ const WeeklyNotes = () => {
                             iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
                             icon={<Logo height={'40px'} width={'40px'}/>}
                             animate={true}
-
                         >
                             <h3 className="vertical-timeline-element-title">{note.title}</h3>
                             <p className={'weekly-note'}>
                                 {note.content}
                             </p>
                             {/*    gantt chart image*/}
-                            <img src={note.image
-                            } alt={`image for ${note.title}`} className={'gantt-chart'}/>
+                            <img src={note.image} alt={`image for ${note.title}`} className={'gantt-chart'}/>
                         </VerticalTimelineElement>
                     )
-
                 })
                 }
             </VerticalTimeline>
