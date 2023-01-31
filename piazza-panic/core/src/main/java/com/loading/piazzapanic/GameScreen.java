@@ -11,6 +11,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -108,7 +109,9 @@ public class GameScreen implements Screen {
     Boolean ketchupCollected = false;
     ArrayList<String> currentlyCollectedIngredients = new ArrayList<String>();
 
+    BitmapFont secondFont;
 
+    String messageTwo = "";
 
     int plateCollectedBy;
 
@@ -179,7 +182,7 @@ public class GameScreen implements Screen {
 
         _parent.font.setColor(Color.RED);
 
-
+        secondFont = new BitmapFont();
     }
 
     public World getWorld() {
@@ -362,7 +365,9 @@ Current y: 303.0*/
         for (Player chef : players) {
             chef.render(this._parent.batch);
         }
-
+        secondFont.getData().setScale(1);
+        secondFont.setColor(Color.RED);
+        secondFont.draw(_parent.batch, messageTwo,20, Gdx.graphics.getHeight()- 15);
         _parent.font.draw(_parent.batch, message, messageX, messageY);
         _parent.batch.end();
         cuttingBoard.render();
@@ -427,6 +432,7 @@ Current y: 303.0*/
             }
 
         }
+
 
 
 
@@ -581,6 +587,10 @@ Current y: 303.0*/
         this.message = _message;
     }
 
+    public void setMessageTwo(String _messageTwo) {
+        messageTwo = _messageTwo;
+    }
+
     @Override
     public void resize(int width, int height) {
         // TODO Auto-generated method stub
@@ -733,6 +743,11 @@ Current y: 303.0*/
 
     public Boolean serve() {
         if (!(receipt.getExpectedToppings().size() == currentlyCollectedIngredients.size())) {
+            if (receipt.getExpectedToppings().size() > currentlyCollectedIngredients.size()) {
+                setMessageTwo("You dont have enough toppings...");
+            } else {
+                setMessageTwo("You have too many toppings...");
+            }
             System.out.println("Not equal lengths");
             System.out.println(receipt.getExpectedToppings());
             System.out.println(currentlyCollectedIngredients);
@@ -740,6 +755,7 @@ Current y: 303.0*/
         }
         for (String i: receipt.getExpectedToppings()) {
             if (!currentlyCollectedIngredients.contains(i)) {
+                setMessageTwo("You got the ingredients wrong");
                 System.out.println("Mismatched ingredients");
                 System.out.println(receipt.getExpectedToppings());
                 System.out.println(currentlyCollectedIngredients);
@@ -753,12 +769,14 @@ Current y: 303.0*/
                      status = tomato.getPrepStatus();
                     if (!Objects.equals(status, "CHOPPED")) {
                         System.out.println("Tomatos are not chopped");
+                        setMessageTwo("Tomatos aren't chopped");
                         return false;
                     }
                     break;
                 case "Lettuce":
                      status = lettuce.getPrepStatus();
                      if (!Objects.equals(status, "CHOPPED")) {
+                         setMessageTwo("Lettuce aren't chopped");
                          System.out.println("Lettuce are not chopped");
                          System.out.println(status);
                          return false;
