@@ -577,6 +577,11 @@ Current y: 303.0*/
                     } else if((playerPosx > 590 && playerPosx < 620) && (playerPosY > 480 && playerPosY <535) && (collectedPlate) && (!ketchupCollected)) {
                         pickup("Ketchup");
                     }
+                    if((playerPosx > 448 && playerPosx < 512) && (playerPosY < 416 && playerPosY > 320) && (collectedPlate) && (chickenPickedUp || beefPickedUp)) {
+                        burger.cook();
+                    } else if((playerPosx > 640 && playerPosx < 704) && (playerPosY < 416 && playerPosY > 320) && (collectedPlate) && (chickenPickedUp || beefPickedUp)) {
+                        burger.cook();
+                    }
 
                 }
 
@@ -796,10 +801,11 @@ Current y: 303.0*/
             }
         }
         String status;
+        Ingredient.Cooking cooked;
         for (String i: currentlyCollectedIngredients) {
             switch (i) {
                 case "Tomato":
-                     status = tomato.getPrepStatus();
+                    status = tomato.getPrepStatus();
                     if (!Objects.equals(status, "CHOPPED")) {
                         System.out.println("Tomatos are not chopped");
                         setMessageTwo("Tomatos aren't chopped");
@@ -807,14 +813,28 @@ Current y: 303.0*/
                     }
                     break;
                 case "Lettuce":
-                     status = lettuce.getPrepStatus();
-                     if (!Objects.equals(status, "CHOPPED")) {
-                         setMessageTwo("Lettuce aren't chopped");
-                         System.out.println("Lettuce are not chopped");
-                         System.out.println(status);
-                         return false;
-                     }
-                     break;
+                    status = lettuce.getPrepStatus();
+                    if (!Objects.equals(status, "CHOPPED")) {
+                        setMessageTwo("Lettuce aren't chopped");
+                        System.out.println("Lettuce are not chopped");
+                        System.out.println(status);
+                        return false;
+                    }
+                    break;
+                case "Chicken":
+                    cooked = burger.getCookStatus();
+                    if (!Objects.equals(cooked, Ingredient.Cooking.COOKED)) {
+                        setMessageTwo("Chicken isn't properly cooked!");
+                        return false;
+                    }
+                    break;
+                case "Beef":
+                    cooked = burger.getCookStatus();
+                    if (!Objects.equals(cooked, Ingredient.Cooking.COOKED)) {
+                        setMessageTwo("Beef isn't properly cooked!");
+                        return false;
+                    }
+                    break;
                 default:
                     break;
 

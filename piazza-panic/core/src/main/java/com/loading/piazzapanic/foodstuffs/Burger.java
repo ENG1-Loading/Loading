@@ -27,6 +27,7 @@ public class Burger extends Ingredient {
                 } else {
                     texture = new Texture("assets/foodstuffs/beef_cooked.png");
                 }
+                break;
             case COOKED:
                 cook_status = Cooking.BURNT;
                 if (name == "Chicken") {
@@ -34,6 +35,7 @@ public class Burger extends Ingredient {
                 } else {
                     texture = new Texture("assets/foodstuffs/beef_burnt.png");
                 }
+                break;
             default:
                 break;
         }

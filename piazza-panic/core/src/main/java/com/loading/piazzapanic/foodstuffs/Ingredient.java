@@ -16,7 +16,7 @@ public abstract class Ingredient extends com.loading.piazzapanic.Entity {
 
     float x, y;
     
-    enum Cooking {
+    public enum Cooking {
         RAW,
         COOKED,
         BURNT,
