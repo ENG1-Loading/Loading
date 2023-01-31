@@ -24,10 +24,7 @@ public class Tomato extends Ingredient {
         
     }
 
-    @Override
-    public void render(SpriteBatch batch) {
 
-    }
 
     @Override
     public void update() {

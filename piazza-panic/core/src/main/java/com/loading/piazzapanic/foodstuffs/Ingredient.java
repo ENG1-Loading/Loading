@@ -13,6 +13,8 @@ public abstract class Ingredient extends com.loading.piazzapanic.Entity {
     Texture texture;
     Sprite sprite;
     String name;
+
+    float x, y;
     
     enum Cooking {
         RAW,
@@ -39,7 +41,10 @@ public abstract class Ingredient extends com.loading.piazzapanic.Entity {
    
     @Override
     public void render(SpriteBatch batch) {
-        // Render logic
+        sprite.setPosition(x, y);
+        batch.begin();
+        sprite.draw(batch);
+        batch.end();
     }
 
     @Override
@@ -49,6 +54,19 @@ public abstract class Ingredient extends com.loading.piazzapanic.Entity {
     }
 
     public abstract void chop();
+
+    public void setPosition(float _x, float _y) {
+        x = _x;
+        y = _y;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
 
     public abstract void cook();
 

@@ -13,9 +13,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.loading.piazzapanic.foodstuffs.*;
 
 public class GameScreen implements Screen {
 
@@ -32,7 +34,11 @@ public class GameScreen implements Screen {
 
     private HeartDisplay heartDisplay;
     private Box2DDebugRenderer box2dDebugRenderer;
-
+    private Bun bun;
+    private Burger burger;
+    private Lettuce lettuce;
+    private Pickles pickles;
+    private Tomato tomato;
     private Npc npc;
 
     private Receipt receipt;
@@ -73,6 +79,12 @@ public class GameScreen implements Screen {
     Boolean collectedReciept = false;
 
     Boolean collectedPlate = false;
+    Boolean bunPickedUp= false;
+    Boolean tomatoPickedUp = false;
+    Boolean picklesPickedUp = false;
+    Boolean lettucePickedUp = false;
+
+
 
     int plateCollectedBy;
 
@@ -115,6 +127,8 @@ public class GameScreen implements Screen {
         this._mapRenderer = _tileMapper.setupMap();
 
         this.plate = new Plate(_parent);
+
+
 
         _parent.font.setColor(Color.RED);
 
@@ -214,7 +228,7 @@ public class GameScreen implements Screen {
             setMessage("Press F to \npickup the \nLettuce");
             messageX = 1210;
             messageY = 480;
-        } else if((playerPosx> 1180 && playerPosx <1210) && (playerPosY > 480 && playerPosY < 510)&& (collectedPlate) && (plateCollectedBy == activePlayer)) {{
+        } else if((playerPosx> 1180 && playerPosx <1210) && (playerPosY > 480 && playerPosY < 510)&& (collectedPlate) && (plateCollectedBy == activePlayer) && (!tomatoPickedUp)) {{
             setMessage("Press F to \npickup the \nTomato");
             messageX = 1210;
             messageY = 600;
@@ -225,8 +239,8 @@ public class GameScreen implements Screen {
         }}
         else {
             setMessage("");
-            System.out.println("Current x: " + playerPosx);
-            System.out.println("Current y: " + playerPosY);
+            //System.out.println("Current x: " + playerPosx);
+            //System.out.println("Current y: " + playerPosY);
         }
         if((players.get(0).getBody().getPosition().x > players.get(1).getBody().getPosition().x - 70)
                 && players.get(0).getBody().getPosition().x < players.get(1).getBody().getPosition().x + 70 &&
@@ -281,7 +295,24 @@ public class GameScreen implements Screen {
             plate.changePosition(players.get(plateCollectedBy).getBody().getPosition().x + 20,players.get(plateCollectedBy).getBody().getPosition().y);
         }
         plate.render();
+        //    Boolean bunPickedUp, burgerPickedUp, lettucePickedUp, picklesPickedUp, tomatoPickedUp = false;
+        if (tomatoPickedUp) {
+            tomato.setPosition(plate.getX(), plate.getY());
+            tomato.render(_parent.batch);
+        }
+        if (lettucePickedUp) {
+            lettuce.setPosition(plate.getX(), plate.getY());
+            lettuce.render(_parent.batch);
+        }
+        if (bunPickedUp) {
+            bun.setPosition(plate.getX(), plate.getY());
+            bun.render(_parent.batch);
+        }
+        if (picklesPickedUp) {
 
+            pickles.setPosition(plate.getX(), plate.getY());
+            pickles.render(_parent.batch);
+        }
         npc.render();
         if (!endNpcTime && npc.getX() >= 1000) {
             npc.move(npc.getX()-1,225);
@@ -300,6 +331,7 @@ public class GameScreen implements Screen {
             }
 
         }
+
 
 
 
@@ -350,6 +382,20 @@ public class GameScreen implements Screen {
                             plateCollectedBy = 0;
                         }
                     }
+                    if((playerPosx> 1180 && playerPosx <1210) && (playerPosY > 480 && playerPosY < 510)&& (collectedPlate) && (plateCollectedBy == activePlayer) && (!tomatoPickedUp)) {
+                        pickup("Tomato");
+
+                    } else if((playerPosx > 1180 && playerPosx<1210) && (playerPosY > 360 && playerPosY < 390)&& (collectedPlate) && (plateCollectedBy == activePlayer) && (!lettucePickedUp)) {
+                        pickup("Lettuce");
+                    }
+                    if ((playerPosx < 80 && playerPosx > 50) && (playerPosY > 360 && playerPosY < 390)&& (collectedPlate) && (plateCollectedBy == activePlayer) && (!bunPickedUp)) {
+                        pickup("Bun");
+                    }
+                    if((playerPosx > 1180 && playerPosx < 1210) && (playerPosY > 610 && playerPosY < 630)&& (collectedPlate) && (plateCollectedBy == activePlayer) && (!picklesPickedUp)) {
+                        pickup("Pickle");
+                    }
+
+
                 }
 
                 if (keycode == Input.Keys.L) {
@@ -409,5 +455,68 @@ public class GameScreen implements Screen {
     public void dispose() {
         _parent.batch.dispose();
         _parent.font.dispose();
+    }
+
+    public void pickup(String itemPickedUp) {
+        /*
+        *     private Bun bun;
+              private Burger burger;
+              private Lettuce lettuce;
+              private Pickles pickles;*/
+        switch(itemPickedUp) {
+            case "Tomato":
+                System.out.println("Tomato picked up");
+                tomatoPickedUp = true;
+                Body tomatoBody = BodyContainer.createBody(
+                        0, 0,
+                        10,
+
+                        10,
+                        false, this.getWorld()
+                );
+                this.tomato = new Tomato(10, 10, tomatoBody, "assets/foodstuffs/tomato.png", "Tomato");
+                break;
+            case "Lettuce":
+                System.out.println("Lettuce picked up");
+                lettucePickedUp = true;
+                Body lettuceBody = BodyContainer.createBody(
+                        0, 0,
+                        10,
+
+                        10,
+                        false, this.getWorld()
+                );
+
+                this.lettuce = new Lettuce(10, 10, lettuceBody, "assets/foodstuffs/lettuce.png", "Lettuce");
+                break;
+            case "Bun":
+                System.out.println("Bun picked up");
+                bunPickedUp = true;
+                Body bunBody = BodyContainer.createBody(
+                        0, 0,
+                        10,
+
+                        10,
+                        false, this.getWorld()
+                );
+                this.bun = new Bun(10,10,bunBody,"assets/foodstuffs/bun.png", "Bun");
+                break;
+            case "Pickle":
+                System.out.println("Pickle picked up");
+                picklesPickedUp = true;
+                Body pickleBody = BodyContainer.createBody(
+                        0, 0,
+                        10,
+
+                        10,
+                        false, this.getWorld()
+                );
+                this.pickles = new Pickles(10,10,pickleBody,"assets/foodstuffs/pickle.png", "Pickle");
+                break;
+
+            default:
+                break;
+        }
+
     }
 }

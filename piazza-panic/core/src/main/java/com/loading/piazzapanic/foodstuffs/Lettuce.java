@@ -17,10 +17,7 @@ public class Lettuce extends Ingredient {
         // Change sprite logic here
     }
 
-    @Override
-    public void render(SpriteBatch batch) {
 
-    }
 
     @Override
     public void update() {
