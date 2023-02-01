@@ -18,21 +18,22 @@ public class Npc {
     private float elapsedTime = 0;
     Boolean moving = true;
     Texture stationary;
-    private float x=1300, y=100;
+    private float x = 1300, y = 100;
+
     public Npc(Launcher parent, Texture npcTexture) {
         this._parent = parent;
         this.NpcTexture = npcTexture;
         this.batch = _parent.batch;
-        System.out.println(npcTexture.getWidth());
-        this.spriteSheetFrames = TextureRegion.split(npcTexture, 15,17);
-
+        this.spriteSheetFrames = TextureRegion.split(npcTexture, 15, 17);
 
     }
+
     /**
-     * Update the time passed and use this to cycle frames, only used if chef is animated
+     * Update the time passed and use this to cycle frames, only used if chef is
+     * animated
      *
      * @param delta the difference in time between renders
-     * */
+     */
     public void update(float delta) {
         elapsedTime += delta;
         if (elapsedTime > frameDuration) {
@@ -41,9 +42,10 @@ public class Npc {
         }
 
     }
+
     /**
      * Renders the sprites we have supplied
-     * */
+     */
     public void render(float delta) {
 
         batch.begin();
@@ -58,11 +60,14 @@ public class Npc {
         batch.end();
 
     }
+
     /**
-     * Change whether the NPC is idle or not*/
+     * Change whether the NPC is idle or not
+     */
     public void toggleMoving(Boolean ismoving) {
         moving = ismoving;
     }
+
     /**
      * Moves a sprites position to a given x and y
      *
@@ -74,15 +79,16 @@ public class Npc {
         this.x = x;
         this.y = y;
     }
+
     /**
-    * Getter for the sprites current x-coordinate
-    * */
+     * Getter for the sprites current x-coordinate
+     */
     public float getX() {
         return x;
     }
 
     /**
-    * To dispose of the current sprite (free up system resources)
+     * To dispose of the current sprite (free up system resources)
      */
     public void dispose() {
         batch.dispose();

@@ -1,4 +1,5 @@
 package com.loading.piazzapanic;
+
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -22,14 +23,16 @@ public class GameOverScreenFail implements Screen {
     Label infoLabel;
     TextButton menuButton;
 
-    private  Sprite backgroundSprite;
-
+    private Sprite backgroundSprite;
 
     /**
-     * Initialises a class of our game over success screen with the parent instance and time taken to complete the level
+     * Initialises a class of our game over success screen with the parent instance
+     * and time taken to complete the level
      *
-     * @param parent the instance of parent class that our class should use
-     * @param timeTaken the amount of time (ms) that it took for the player to complete the level*/
+     * @param parent    the instance of parent class that our class should use
+     * @param timeTaken the amount of time (ms) that it took for the player to
+     *                  complete the level
+     */
     public GameOverScreenFail(Launcher parent, long timeTaken) {
 
         this._parent = parent;
@@ -39,8 +42,11 @@ public class GameOverScreenFail implements Screen {
         backgroundSprite = new Sprite(background);
         Table table = new Table();
         this.stage = new Stage();
-        gameOverLabel = new Label("Game Over, it took you: "+(int) (timeTaken/1000)+" seconds to run out of lives", new Label.LabelStyle(new BitmapFont(), Color.RED));
-        infoLabel = new Label("To go back to menu press the button", new Label.LabelStyle(new BitmapFont(), Color.GOLD));
+        gameOverLabel = new Label(
+                "Game Over, it took you: " + (int) (timeTaken / 1000) + " seconds to run out of lives",
+                new Label.LabelStyle(new BitmapFont(), Color.RED));
+        infoLabel = new Label("To go back to menu press the button",
+                new Label.LabelStyle(new BitmapFont(), Color.GOLD));
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
         style.up = new TextureRegionDrawable(new TextureRegion(new Texture("button.png")));
         style.down = new TextureRegionDrawable(new TextureRegion(new Texture("button_down.png")));
@@ -62,6 +68,7 @@ public class GameOverScreenFail implements Screen {
         this.stage.addActor(table);
 
     }
+
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage);
@@ -75,8 +82,7 @@ public class GameOverScreenFail implements Screen {
         _parent.batch.end();
         stage.act();
         stage.draw();
-        System.out.println(Gdx.graphics.getHeight());
-        System.out.println(Gdx.graphics.getWidth());
+
     }
 
     @Override
