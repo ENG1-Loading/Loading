@@ -23,7 +23,7 @@ export default function Homepage() {
                     <div className="boxContent">
                             <h3>Executable jar</h3>
                             <p>Please click the button below to download the executable jar of our game, or the button below to view all versions</p>
-                            <a href={jar} download="game.jar" target='_blank'>
+                            <a href={jar} download="game.zip" target='_blank'>
                             <button>Download</button>
                             </a>
                         </div>
