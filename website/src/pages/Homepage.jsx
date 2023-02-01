@@ -1,5 +1,5 @@
 import "../static/home.css"
-import jar from "../piazza-panic.jar"
+import jar from "../piazza-panic.zip"
 import Header from "../SharedComponents/Header";
 import {Link} from "react-router-dom";
 export default function Homepage() {
