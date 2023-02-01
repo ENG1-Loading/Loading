@@ -1,8 +1,9 @@
 {
   "files": {
     "main.css": "/Loading/static/css/main.26a190ba.css",
-    "main.js": "/Loading/static/js/main.e018f3ea.js",
+    "main.js": "/Loading/static/js/main.41ae836b.js",
     "static/js/787.71e672d5.chunk.js": "/Loading/static/js/787.71e672d5.chunk.js",
+    "static/media/piazza-panic.jar": "/Loading/static/media/piazza-panic.24473bee55bd09ab9b32.jar",
     "static/media/Plan1.pdf": "/Loading/static/media/Plan1.db0e6b69d24e61a740bb.pdf",
     "static/media/Arch1.pdf": "/Loading/static/media/Arch1.1eba15a0144768b00272.pdf",
     "static/media/classDiagram.png": "/Loading/static/media/classDiagram.fa60d0e2c4bb992380bb.png",
@@ -37,13 +38,12 @@
     "static/media/componentDiagram.txt": "/Loading/static/media/componentDiagram.3497fff233118a6018a7.txt",
     "static/media/sequenceFinal.txt": "/Loading/static/media/sequenceFinal.7755a11d810a88909a73.txt",
     "static/media/activityFinal.txt": "/Loading/static/media/activityFinal.23512b8905a4b02011af.txt",
-    "static/media/piazza-panic.jar": "/Loading/static/media/piazza-panic.31d6cfe0d16ae931b73c.jar",
     "main.26a190ba.css.map": "/Loading/static/css/main.26a190ba.css.map",
-    "main.e018f3ea.js.map": "/Loading/static/js/main.e018f3ea.js.map",
+    "main.41ae836b.js.map": "/Loading/static/js/main.41ae836b.js.map",
     "787.71e672d5.chunk.js.map": "/Loading/static/js/787.71e672d5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.26a190ba.css",
-    "static/js/main.e018f3ea.js"
+    "static/js/main.41ae836b.js"
   ]
 }
