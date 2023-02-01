@@ -1,0 +1,11 @@
+@startuml
+Customer -> Chef: Makes order
+Customer <- Customer: Waits for order
+
+Chef --> Ingredients: Gathers
+Chef --> Ingredients: Prepares
+Chef --> Order: Makes Order
+
+Chef --> Customer: Serves order
+
+Customer <-- Customer: Leaves satisfied/unsatisfied

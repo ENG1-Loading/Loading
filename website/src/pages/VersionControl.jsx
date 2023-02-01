@@ -1,9 +1,10 @@
 import { Gitgraph, templateExtend } from "@gitgraph/react";
+import Header from "../SharedComponents/Header";
 
 export default function VersionControl() {
   let options = {
     template: templateExtend("metro", {
-      colors: ["gray", "blue", "turquoise", "darkgreen", "yellowgreen", "navy"],
+      colors: ["gray", "#FFA500", "#FF69B4", "#00FF00", "#FFFF00", "#87CEFA"],
       commit: {
         message: {
           displayAuthor: false,
@@ -14,7 +15,8 @@ export default function VersionControl() {
   };
     return (
       <>
-        <h1>Git history of our repository</h1>
+        <Header title={'Git History'} buttonName={'Github Repo'} link={'https://github.com/ENG1-Loading/Loading'}/>
+        <div style={{marginBottom: '20px'}}></div>
       <Gitgraph options={options}>
         {(gitgraph) => {
           // Simulate git commands with Gitgraph API.
@@ -50,15 +52,6 @@ export default function VersionControl() {
           gameDev.commit("c795978 new branch, game engine initial (Jake Keast)")
           gameDev.commit("7ff9d0b updated readme (Jake Keast)")
           gameDev.commit("b291522 more work done, error with world (Jake Keast)")
-          
-          
-
- 
-          
-
-          
-          
-          
         }}
       </Gitgraph>
       </>

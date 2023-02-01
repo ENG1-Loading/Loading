@@ -1,0 +1,9 @@
+@startuml
+[Customer] - [Order] : Makes
+[Order] - [Recipe] : Includes
+[Recipe] ..> [Ingredients] : Contains
+[Ingredients] ..> [Cooking station] : Prepared at
+[Ingredients] ..> [Pantry] : Stored in
+[Chef] ..> [Order] : Serves
+[Chef] ..> [Cooking station] : Uses
+@enduml

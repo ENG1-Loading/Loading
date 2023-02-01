@@ -1,0 +1,68 @@
+.deliverables-app {
+    display: flex;
+    margin: auto;
+    width: 70%;
+    margin-top: 20px;
+/*    break new */
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #151515;
+}
+
+.deliverables-card {
+    position: relative;
+
+    margin: 0.5rem 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    min-width: 200px;
+    border: none;
+    box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
+}
+
+.app-file-list {
+    border: 1px solid #ebebeb;
+}
+
+.app-file-list .app-file-icon {
+    background-color: #F5F5F5;
+    padding: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    border-bottom: 1px solid #ebebeb;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.app-file-list:hover {
+    border-color: #d7d7d7;
+}
+
+.description {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.fa-download {
+    color: #333333;
+    cursor: pointer;
+    transition: 0.3s
+}
+
+.fa-download:hover {
+    color: #2ec1ac;
+}
+
+.fa-download:active {
+    color: #28df99;
+}
+@media only screen and (max-width: 1200px) {
+    .deliverables-app {
+        width: 97%;
+    }
+}
